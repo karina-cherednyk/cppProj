@@ -3,7 +3,7 @@
     public class Email
     {
         private string mailname;
-        public string MainName
+        public string MailName
         {
             get { return mailname; }
             set { mailname = value; }
@@ -23,7 +23,7 @@
 
         public Email(string mailname, string domain)
         {
-            MainName = mailname;
+            MailName = mailname;
             Domain = domain;
         }
     }

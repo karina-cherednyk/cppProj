@@ -20,7 +20,7 @@
         public PersonName(string name, string surname)
         {
             Name = name;
-            Surname = name;
+            Surname = surname;
         }
     }
 }
