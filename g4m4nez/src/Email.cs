@@ -1,9 +1,5 @@
-﻿using System;
-namespace Entities
+﻿public class Email
 {
-    public class Email
-    {
-        private string mailname;
-        private string domain;
-    }
+    private string mailname;
+    private string domain;
 }

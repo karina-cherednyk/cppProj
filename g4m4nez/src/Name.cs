@@ -1,9 +1,13 @@
-﻿using System;
-namespace Entities
+﻿public class Name
 {
-    public class Name
+    private string name
     {
-        private string name;
-        private string surname;
+        get { return name; }
+        set { name = value; }
+    }
+    private string surname
+    {
+        get { return surname; }
+        set { surname = value; }
     }
 }

@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-namespace Entities
+﻿using System.Collections.Generic;
+
+public class User
 {
-    public class User
+    private Name name
     {
-        private Name name;
-        private Email email;
-        private HashSet<Category> categories;
+        //get { return name.name + " " + name.surname; }
+        set { name = value; }
     }
+    private Email email;
+    private HashSet<Category> categories;
 }

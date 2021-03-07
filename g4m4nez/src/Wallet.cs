@@ -1,8 +1,4 @@
-﻿using System;
-namespace Entities
+﻿public class Wallet
 {
-    public class Wallet
-    {
 
-    }
 }
