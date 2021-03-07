@@ -23,5 +23,12 @@ namespace BusinessLayer
         {
             get { return categories; }
         }
+
+        public User(PersonName name, Email email)
+        {
+            Name = name;
+            Email = email;
+            categories = new UserCategories();
+        }
     }
 }
