@@ -16,7 +16,7 @@
             set { name = value; }
         }
 
-        private string description;
+        private string description = "";
         public string Description
         {
             get { return description; }
@@ -39,6 +39,13 @@
         {
             Name = name;
             Description = description;
+            Icon = icon;
+            Color = color;
+        }
+
+        public Category(string name, string icon, Colors color)
+        {
+            Name = name;
             Icon = icon;
             Color = color;
         }
