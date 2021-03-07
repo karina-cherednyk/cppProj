@@ -81,23 +81,18 @@ namespace BusinessLayer.Tests
             var expected6 = new Money(1467.13m, Money.Currencies.USD);
 
             // Assert
-            Assert.Equal(m11 + m12, expected1);
-            Assert.Equal(m12 + m11, expected1);
-
-            Assert.Equal(m22 + m21, expected2);
-            Assert.Equal(m22 + m21, expected2);
-
-            Assert.Equal(m32 + m31, expected3);
-            Assert.Equal(m32 + m31, expected3);
-
-            Assert.Equal(m42 + m41, expected4);
-            Assert.Equal(m42 + m41, expected4);
-
-            Assert.Equal(m52 + m51, expected5);
-            Assert.Equal(m52 + m51, expected5);
-
-            Assert.Equal(m62 + m61, expected6);
-            Assert.Equal(m62 + m61, expected6);
+            Assert.True(m11 + m12 == expected1);
+            Assert.True(m12 + m11 == expected1);
+            Assert.True(m21 + m22 == expected2);
+            Assert.True(m22 + m21 == expected2);
+            Assert.True(m31 + m32 == expected3);
+            Assert.True(m32 + m31 == expected3);
+            Assert.True(m41 + m42 == expected4);
+            Assert.True(m42 + m41 == expected4);
+            Assert.True(m51 + m52 == expected5);
+            Assert.True(m52 + m51 == expected5);
+            Assert.True(m61 + m62 == expected6);
+            Assert.True(m62 + m61 == expected6);
         }
 
         [Fact]
@@ -152,23 +147,18 @@ namespace BusinessLayer.Tests
             var expected62 = new Money(1467.13m, Money.Currencies.USD);
 
             // Assert
-            Assert.Equal(m11 - m12, expected11);
-            Assert.Equal(m12 - m11, expected12);
-
-            Assert.Equal(m22 - m21, expected21);
-            Assert.Equal(m22 - m21, expected22);
-
-            Assert.Equal(m32 - m31, expected31);
-            Assert.Equal(m32 - m31, expected32);
-
-            Assert.Equal(m42 - m41, expected41);
-            Assert.Equal(m42 - m41, expected42);
-
-            Assert.Equal(m52 - m51, expected51);
-            Assert.Equal(m52 - m51, expected52);
-
-            Assert.Equal(m62 - m61, expected61);
-            Assert.Equal(m62 - m61, expected62);
+            Assert.True(m11 - m12 == expected11);
+            Assert.True(m12 - m11 == expected12);
+            Assert.True(m21 - m22 == expected21);
+            Assert.True(m22 - m21 == expected22);
+            Assert.True(m31 - m32 == expected31);
+            Assert.True(m32 - m31 == expected32);
+            Assert.True(m41 - m42 == expected41);
+            Assert.True(m42 - m41 == expected42);
+            Assert.True(m51 - m52 == expected51);
+            Assert.True(m52 - m51 == expected52);
+            Assert.True(m61 - m62 == expected61);
+            Assert.True(m62 - m61 == expected62);
         }
 
         [Fact]
@@ -192,9 +182,9 @@ namespace BusinessLayer.Tests
         public void TestToString()
         {
             //Arrange
-            var expected1 = "200 UAH";
-            var expected2 = "-251.44 UAH";
-            var expected3 = "0 EUR";
+            var expected1 = "200,0 UAH";
+            var expected2 = "-251,44 USD";
+            var expected3 = "0,0 EUR";
 
             //Act
             var actual1 = new Money(200.0m, Money.Currencies.UAH).ToString();
