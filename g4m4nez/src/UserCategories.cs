@@ -9,7 +9,9 @@ namespace BusinessLayer
             get { return categories; }
         }
 
-        public UserCategories() { }
+        public UserCategories() {
+            categories = new HashSet<Category>();
+        }
 
         public void AddCategory(Category category)
         {
