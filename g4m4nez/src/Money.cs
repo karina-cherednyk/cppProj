@@ -15,6 +15,12 @@ namespace BusinessLayer
             USD, UAH, EUR
         }
 
+        private static Dictionary<Currencies, string> CurrencyNames = new Dictionary<Currencies, string> {
+            {Currencies.USD, "USD"},
+            {Currencies.UAH, "UAH" },
+            {Currencies.EUR, "EUR" }
+        };
+
         private Currencies currency;
         public Currencies Currency
         {
@@ -50,6 +56,21 @@ namespace BusinessLayer
             {
                 return new Money(a.Amount - b.Amount, a.Currency);
             }
+        }
+
+        public static bool operator ==(Money a, Money b)
+        {
+            return a.Amount == b.Amount && a.Currency == b.Currency;
+        }
+
+        public static bool operator !=(Money a, Money b)
+        {
+            return !(a == b)
+        }
+
+        public override string ToString()
+        {
+            return Amount + " " + CurrencyNames[Currency];
         }
 
     }
