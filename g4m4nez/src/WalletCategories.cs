@@ -80,7 +80,7 @@ namespace BusinessLayer
         public WalletCategories()
         {
             allCategories = new HashSet<Category>();
-            activeCaterogies = new Dictionary<Category, bool>;
+            activeCaterogies = new Dictionary<Category, bool>();
         }
     }
 }
