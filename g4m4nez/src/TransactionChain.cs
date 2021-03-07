@@ -4,7 +4,6 @@ namespace BusinessLayer
 {
     public class TransactionChain
     {
-
         // Heap of binary search tree would be a better choice
         // Since it'd provide us with transactions sorted by date
         private List<Transaction> transactions;
@@ -40,7 +39,6 @@ namespace BusinessLayer
                 return amount; 
             }
         }
-
         public Money MonthExpences
         {
             get
@@ -62,7 +60,7 @@ namespace BusinessLayer
         {
             if (transaction.Currency != Currency)
             {
-                throw new System.InvalidOperationException("Can't add transaction with different currency");
+                throw new System.ArgumentException("Can't add transaction with different currency");
             }
             currentAmount += transaction.Amount;
             Transactions.Add(transaction);
