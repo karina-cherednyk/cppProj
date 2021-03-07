@@ -58,6 +58,16 @@ namespace BusinessLayer
             }
         }
 
+        public static bool operator ==(Money a, Money b)
+        {
+            return a.Amount == b.Amount && a.Currency == b.Currency;
+        }
+
+        public static bool operator !=(Money a, Money b)
+        {
+            return a.Amount != b.Amount || a.Currency != b.Currency;
+        }
+
         public override string ToString()
         {
             return Amount + " " + CurrencyNames[Currency];
