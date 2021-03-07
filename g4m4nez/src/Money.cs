@@ -46,7 +46,7 @@ namespace BusinessLayer
             }
         }
 
-        public static Money operator -(Money a, Money b)
+        public static Money operator-(Money a, Money b)
         {
             if (a.Currency != b.Currency)
             {
