@@ -65,7 +65,7 @@ namespace BusinessLayer
 
         public static bool operator !=(Money a, Money b)
         {
-            return !(a == b)
+            return !(a == b);
         }
 
         public override string ToString()
