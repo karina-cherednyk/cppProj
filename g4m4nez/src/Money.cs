@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 namespace BusinessLayer
 {
     public class Money
@@ -57,6 +58,7 @@ namespace BusinessLayer
                 return new Money(a.Amount - b.Amount, a.Currency);
             }
         }
+        
 
         public static bool operator ==(Money a, Money b)
         {
@@ -65,7 +67,7 @@ namespace BusinessLayer
 
         public static bool operator !=(Money a, Money b)
         {
-            return !(a == b)
+            return !(a == b);
         }
 
         public override string ToString()
