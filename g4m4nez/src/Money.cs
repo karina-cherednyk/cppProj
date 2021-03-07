@@ -28,5 +28,29 @@ namespace BusinessLayer
             Currency = currency;
         }
 
+        public static Money operator+(Money a, Money b)
+        {
+            if (a.Currency != b.Currency)
+            {
+                throw new System.InvalidOperationException("Can't add different currencies");
+            }
+            else
+            {
+                return new Money(a.Amount + b.Amount, a.Currency);
+            }
+        }
+
+        public static Money operator -(Money a, Money b)
+        {
+            if (a.Currency != b.Currency)
+            {
+                throw new System.InvalidOperationException("Can't subtract different currencies");
+            }
+            else
+            {
+                return new Money(a.Amount - b.Amount, a.Currency);
+            }
+        }
+
     }
 }
