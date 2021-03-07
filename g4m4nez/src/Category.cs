@@ -22,5 +22,25 @@
             get { return description; }
             set { description = value; }
         }
+
+        public enum Colors
+        {
+            BLUE, ORANGE, BLACK, CYAN, MAGENTA
+        }
+
+        private Colors color;
+        public Colors Color
+        {
+            get { return color; }
+            set { color = value; }
+        }
+
+        public Category(string name, string description, string icon, Colors color)
+        {
+            Name = name;
+            Description = description;
+            Icon = icon;
+            Color = color;
+        }
     }
 }
