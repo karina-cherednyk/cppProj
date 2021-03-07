@@ -22,5 +22,10 @@
             Name = name;
             Surname = surname;
         }
+
+        public override string ToString()
+        {
+            return Name + " " + Surname;
+        }
     }
 }
