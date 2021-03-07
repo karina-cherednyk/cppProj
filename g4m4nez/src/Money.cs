@@ -15,6 +15,12 @@ namespace BusinessLayer
             USD, UAH, EUR
         }
 
+        private static Dictionary<Currencies, string> CurrencyNames = new Dictionary<Currencies, string> {
+            {Currencies.USD, "USD"},
+            {Currencies.UAH, "UAH" },
+            {Currencies.EUR, "EUR" }
+        };
+
         private Currencies currency;
         public Currencies Currency
         {
@@ -50,6 +56,11 @@ namespace BusinessLayer
             {
                 return new Money(a.Amount - b.Amount, a.Currency);
             }
+        }
+
+        public override string ToString()
+        {
+            return Amount + " " + CurrencyNames[Currency];
         }
 
     }
