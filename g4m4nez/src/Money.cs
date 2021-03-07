@@ -22,5 +22,11 @@ namespace BusinessLayer
             set { currency = value; }
         }
 
+        public Money(decimal amount, Currencies currency)
+        {
+            Amount = amount;
+            Currency = currency;
+        }
+
     }
 }
