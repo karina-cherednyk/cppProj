@@ -78,6 +78,7 @@ namespace BusinessLayer
         {
             this.currency = currency;
             currentAmount = new Money(0, currency);
+            transactions = new List<Transaction>();
         }
     }
 }
