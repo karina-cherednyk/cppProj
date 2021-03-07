@@ -1,26 +1,26 @@
 ﻿namespace BusinessLayer
 {
-    public class PersonName
+    public struct PersonName
     {
-        private string name;
+        private string _name;
 
         public string Name
         {
-            get { return name; }
-            set { name = value; }
+            get { return _name; }
+            set { _name = value; }
         }
 
-        private string surname;
+        private string _surname;
         public string Surname
         {
-            get { return surname; }
-            set { surname = value; }
+            get { return _surname; }
+            set { _surname = value; }
         }
 
         public PersonName(string name, string surname)
         {
-            Name = name;
-            Surname = surname;
+            _name = name;
+            _surname = surname;
         }
 
         public override string ToString()

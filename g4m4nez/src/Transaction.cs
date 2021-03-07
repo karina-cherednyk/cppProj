@@ -2,63 +2,64 @@
 using System;
 namespace BusinessLayer
 {
-    public class Transaction
+    public struct Transaction
     {
-        private Money amount;
+        private Money _amount;
         public Money Amount
         {
-            get { return amount; }
-            set { amount = value; }
+            get { return _amount; }
+            set { _amount = value; }
         }
 
         public Money.Currencies Currency
         {
-            get { return amount.Currency; }
+            get { return _amount.Currency; }
         }
 
-        private string description;
+        private string _description;
         public string Description
         {
-            get { return description; }
-            set { description = value; }
+            get { return _description; }
+            set { _description = value; }
         }
 
-        private List<string> attachments;
+        private List<string> _attachments;
         public List<string> Attachments
         {
-            get { return attachments; }
-            set { attachments = value; }
+            get { return _attachments; }
+            set { _attachments = value; }
         }
 
-        private Category category;
+        private Category _category;
         public Category TransactionCategory
         {
-            get { return category; }
-            set { category = value; }
+            get { return _category; }
+            set { _category = value; }
         }
 
-        private DateTime date;
+        private DateTime _date;
         public DateTime Date
         {
-            get { return date; }
-            set { date = value; }
+            get { return _date; }
+            set { _date = value; }
         }
 
         public Transaction(Money amount, string description, Category category, DateTime date)
         {
-            Amount = amount;
-            Description = description;
-            TransactionCategory = category;
-            Date = date;
+            _amount = amount;
+            _description = description;
+            _category = category;
+            _date = date;
+            _attachments = new List<String>();
         }
 
         public Transaction(Money amount, string description, Category category, DateTime date, List<string> attachments)
         {
-            Amount = amount;
-            Description = description;
-            TransactionCategory = category;
-            Date = date;
-            Attachments = attachments;
+            _amount = amount;
+            _description = description;
+            _category = category;
+            _date = date;
+            _attachments = attachments;
         }
     }
 }
