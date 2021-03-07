@@ -1,4 +1,7 @@
-﻿public class WalletCategories
+﻿namespace BusinessLayer
 {
+    public class WalletCategories
+    {
 
+    }
 }

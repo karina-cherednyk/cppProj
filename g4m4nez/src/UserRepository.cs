@@ -1,4 +1,7 @@
-﻿public class UserRepository
+﻿namespace BusinessLayer
 {
+    public class UserRepository
+    {
 
+    }
 }

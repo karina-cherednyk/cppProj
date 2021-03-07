@@ -1,4 +1,7 @@
-﻿public class Transaction
+﻿namespace BusinessLayer
 {
+    public class Transaction
+    {
 
+    }
 }

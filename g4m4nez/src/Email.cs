@@ -1,5 +1,8 @@
-﻿public class Email
+﻿namespace BusinessLayer
 {
-    private string mailname;
-    private string domain;
+    public class Email
+    {
+        private string mailname;
+        private string domain;
+    }
 }

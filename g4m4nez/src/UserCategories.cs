@@ -1,22 +1,24 @@
 ﻿using System.Collections.Generic;
-
-public class UserCategories
+namespace BusinessLayer
 {
-    private HashSet<Category> categories;
-    public HashSet<Category> Categories
+    public class UserCategories
     {
-        get { return categories; }
-    }
+        private HashSet<Category> categories;
+        public HashSet<Category> Categories
+        {
+            get { return categories; }
+        }
 
-    public UserCategories() { }
+        public UserCategories() { }
 
-    public void AddCategory(Category category)
-    {
-        Categories.Add(category);
-    }
+        public void AddCategory(Category category)
+        {
+            Categories.Add(category);
+        }
 
-    public void RemoveCategory(Category category)
-    {
-        Categories.Remove(category);
+        public void RemoveCategory(Category category)
+        {
+            Categories.Remove(category);
+        }
     }
 }

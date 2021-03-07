@@ -1,4 +1,8 @@
-﻿public class TransactionChain
+﻿namespace BusinessLayer
 {
+    public class TransactionChain
+    {
+
+    }
 
 }

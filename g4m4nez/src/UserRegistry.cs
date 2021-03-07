@@ -1,4 +1,7 @@
-﻿public class UserRegistry
+﻿namespace BusinessLayer
 {
+    public class UserRegistry
+    {
 
+    }
 }

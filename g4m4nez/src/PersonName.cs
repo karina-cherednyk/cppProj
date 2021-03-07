@@ -1,23 +1,26 @@
-﻿public class PersonName
+﻿namespace BusinessLayer
 {
-    private string name;
-
-    public string Name
+    public class PersonName
     {
-        get { return name; }
-        set { name = value;}
-    }
+        private string name;
 
-    private string surname;
-    public string Surname
-    {
-        get { return surname; }
-        set { surname = value; }
-    }
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
 
-    public PersonName(string name, string surname)
-    {
-        Name = name;
-        Surname = name;
+        private string surname;
+        public string Surname
+        {
+            get { return surname; }
+            set { surname = value; }
+        }
+
+        public PersonName(string name, string surname)
+        {
+            Name = name;
+            Surname = name;
+        }
     }
 }
