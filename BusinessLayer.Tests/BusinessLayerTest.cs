@@ -4,8 +4,8 @@ using Xunit;
 
 namespace BusinessLayer.Tests
 {
-    public class WalletCategoriesTest
+    public class BusinessLayerTest
     {
-
+        
     }
 }

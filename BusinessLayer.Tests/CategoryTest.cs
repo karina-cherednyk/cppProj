@@ -28,15 +28,6 @@ namespace BusinessLayer.Tests
         }
 
         [Fact]
-        public void TestNameExceptions()
-        {
-            Assert.Throws<ArgumentException>(() => new Category("", "icon.png", Category.Colors.BLACK));
-            Assert.Throws<ArgumentException>(() => new Category(" ", "icon.png", Category.Colors.BLACK));
-            Assert.Throws<ArgumentException>(() => new Category("  ", "icon.png", Category.Colors.BLACK));
-            Assert.Throws<ArgumentException>(() => new Category("\t", "icon.png", Category.Colors.BLACK));
-        }
-
-        [Fact]
         public void TestIcon()
         {
             //Arrange

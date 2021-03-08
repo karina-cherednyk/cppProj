@@ -1,4 +1,6 @@
-﻿namespace BusinessLayer
+﻿using System.Text.RegularExpressions;
+
+namespace BusinessLayer
 {
     public struct Email
     {

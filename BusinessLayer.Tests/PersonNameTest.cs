@@ -31,17 +31,6 @@ namespace BusinessLayer.Tests
         }
 
         [Fact]
-        public void TestNameExceptions()
-        {
-            //Arrange, Act, Assert
-            Assert.Throws<ArgumentException>(() => new PersonName("", "Thompson").Name);
-            Assert.Throws<ArgumentException>(() => new PersonName(" ", "Thompson").Name);
-            Assert.Throws<ArgumentException>(() => new PersonName(",", "Thompson").Name);
-            Assert.Throws<ArgumentException>(() => new PersonName("+bl", "Thompson").Name);
-            Assert.Throws<ArgumentException>(() => new PersonName("%$", "Thompson").Name);
-        }
-
-        [Fact]
         public void TestSurname()
         {
             //Arrange
@@ -61,17 +50,6 @@ namespace BusinessLayer.Tests
             Assert.Equal(expected2, actual2);
             Assert.Equal(expected3, actual3);
             Assert.Equal(expected4, actual4);
-        }
-
-        [Fact]
-        public void TestSurnameExceptions()
-        {
-            //Arrange, Act, Assert
-            Assert.Throws<ArgumentException>(() => new PersonName("Alexandra", "").Name);
-            Assert.Throws<ArgumentException>(() => new PersonName("Alexandra", " ").Name);
-            Assert.Throws<ArgumentException>(() => new PersonName("Alexandra", ",").Name);
-            Assert.Throws<ArgumentException>(() => new PersonName("Alexandra", "+bl").Name);
-            Assert.Throws<ArgumentException>(() => new PersonName("Alexandra", "%$").Name);
         }
 
         [Fact]
