@@ -104,5 +104,20 @@ namespace BusinessLayer
                 throw new System.InvalidOperationException("Only owner can deactivate wallet categories");
             }
         }
+
+        public void RemoveTransaction(Guid userID, Guid walletID, Transaction transaction)
+        {
+            User user = Users[userID];
+            Wallet wallet = Wallets[walletID];
+            if (transaction.User == user || wallet.IsOwner(user))
+            {
+                wallet.Transactions.RemoveTransaction(transaction);
+            }
+            else
+            {
+                throw new System.InvalidOperationException("Only wallet owner and person who the transaction can remove it");
+            }
+
+        }
     }
 }
