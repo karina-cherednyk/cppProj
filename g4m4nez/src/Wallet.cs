@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
+using System;
 namespace BusinessLayer
 {
     public class Wallet
     {
-
         private decimal startingBalance;
         public decimal StartingBalance
         {
@@ -92,6 +92,11 @@ namespace BusinessLayer
         public void RemoveTransaction(Transaction transaction)
         {
             Transactions.RemoveTransaction(transaction);
+        }
+
+        public bool IsOwner(User user)
+        {
+            return user == Users.Owner;
         }
 
         public Wallet(User owner, string name, decimal startingBalance, Money.Currencies currency)

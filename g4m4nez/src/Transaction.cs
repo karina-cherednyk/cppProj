@@ -5,6 +5,7 @@ namespace BusinessLayer
     public struct Transaction
     {
         private Money _amount;
+        public User User { get; }
         public Money Amount
         {
             get { return _amount; }
@@ -44,8 +45,9 @@ namespace BusinessLayer
             set { _date = value; }
         }
 
-        public Transaction(Money amount, string description, Category category, DateTime date)
+        public Transaction(User user, Money amount, string description, Category category, DateTime date)
         {
+            User = user;
             _amount = amount;
             _description = description;
             _category = category;
@@ -53,8 +55,9 @@ namespace BusinessLayer
             _attachments = new List<String>();
         }
 
-        public Transaction(Money amount, string description, Category category, DateTime date, List<string> attachments)
+        public Transaction(User user, Money amount, string description, Category category, DateTime date, List<string> attachments)
         {
+            User = user;
             _amount = amount;
             _description = description;
             _category = category;
