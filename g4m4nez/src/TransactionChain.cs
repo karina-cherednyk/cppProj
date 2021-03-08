@@ -4,7 +4,6 @@ namespace BusinessLayer
 {
     public class TransactionChain
     {
-
         // Heap of binary search tree would be a better choice
         // Since it'd provide us with transactions sorted by date
         private List<Transaction> transactions;
@@ -40,7 +39,6 @@ namespace BusinessLayer
                 return amount; 
             }
         }
-
         public Money MonthExpences
         {
             get
@@ -62,7 +60,7 @@ namespace BusinessLayer
         {
             if (transaction.Currency != Currency)
             {
-                throw new System.InvalidOperationException("Can't add transaction with different currency");
+                throw new System.ArgumentException("Can't add transaction with different currency");
             }
             currentAmount += transaction.Amount;
             Transactions.Add(transaction);
@@ -71,7 +69,10 @@ namespace BusinessLayer
         public void RemoveTransaction(Transaction transaction)
         {
             currentAmount -= transaction.Amount;
-            Transactions.Remove(transaction);
+            if (!Transactions.Remove(transaction))
+            {
+                throw new System.MissingMemberException("Transaction was not found");
+            }
         }
 
         public TransactionChain(Money.Currencies currency)
@@ -79,6 +80,27 @@ namespace BusinessLayer
             this.currency = currency;
             currentAmount = new Money(0, currency);
             transactions = new List<Transaction>();
+        }
+
+        public List<Transaction> GetLastNTransactions(int n)
+        {
+            int num = Transactions.Count - 1;
+            List<Transaction> result = new List<Transaction>();
+            for (int i = num; i >= 0 && i >= num - n; --i)
+            {
+                result.Add(Transactions[i]);
+            }
+            return result;
+        }
+
+        public List<Transaction> GetFromIndex(int index)
+        {
+            int num = Transactions.Count - 1;
+            if (index > num)
+            {
+                throw new System.IndexOutOfRangeException("There are not enough elements");
+            }
+            return Transactions.GetRange(index, num);
         }
     }
 }

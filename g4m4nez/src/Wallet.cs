@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System;
 namespace BusinessLayer
 {
     public class Wallet
@@ -75,23 +76,12 @@ namespace BusinessLayer
 
         public List<Transaction> GetLastNTransactions(int n = 10)
         {
-            int num = Transactions.Transactions.Count - 1;
-            List<Transaction> result = new List<Transaction>();
-            for (int i = num; i >= 0 && i >= num - n; --i)
-            {
-                result.Add(Transactions.Transactions[i]);
-            }
-            return result;
+            return Transactions.GetLastNTransactions(n);
         }
 
         public List<Transaction> GetFromIndex(int index)
         {
-            int num = Transactions.Transactions.Count - 1;
-            if (index > num)
-            {
-                throw new System.IndexOutOfRangeException("There are not enough elements");
-            }
-            return Transactions.Transactions.GetRange(index, num);
+            return Transactions.GetFromIndex(index);
         }
 
         public void AddTransaction(Transaction transaction)
@@ -104,11 +94,19 @@ namespace BusinessLayer
             Transactions.RemoveTransaction(transaction);
         }
 
-        public Wallet(string name, int startingBalance, Money.Currencies currency)
+        public bool IsOwner(User user)
         {
+            return user == Users.Owner;
+        }
+
+        public Wallet(User owner, string name, decimal startingBalance, Money.Currencies currency)
+        {
+            users = new UserRegistry(owner);
             Name = name;
             this.startingBalance = startingBalance;
             this.currency = currency;
+
+            categories = new WalletCategories(owner.Categories.Categories);
         }
 
     }

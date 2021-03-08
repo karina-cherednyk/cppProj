@@ -1,26 +1,26 @@
 ﻿namespace BusinessLayer
 {
-    public class Category
+    public struct Category
     {
-        private string icon;
+        private string _icon;
         public string Icon
         {
-            get { return icon; }
-            set { icon = value; }
+            get { return _icon; }
+            set { _icon = value; }
         }
 
-        private string name;
+        private string _name;
         public string Name
         {
-            get { return name; }
-            set { name = value; }
+            get { return _name; }
+            set { _name = value; }
         }
 
-        private string description = "";
+        private string _description;
         public string Description
         {
-            get { return description; }
-            set { description = value; }
+            get { return _description; }
+            set { _description = value; }
         }
 
         public enum Colors
@@ -28,26 +28,27 @@
             BLUE, ORANGE, BLACK, CYAN, MAGENTA
         }
 
-        private Colors color;
+        private Colors _color;
         public Colors Color
         {
-            get { return color; }
-            set { color = value; }
+            get { return _color; }
+            set { _color = value; }
         }
 
         public Category(string name, string description, string icon, Colors color)
         {
-            Name = name;
-            Description = description;
-            Icon = icon;
-            Color = color;
+            _name = name;
+            _description = description;
+            _icon = icon;
+            _color = color;
         }
 
         public Category(string name, string icon, Colors color)
         {
-            Name = name;
-            Icon = icon;
-            Color = color;
+            _name = name;
+            _description = "";
+            _icon = icon;
+            _color = color;
         }
     }
 }

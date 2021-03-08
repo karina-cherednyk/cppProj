@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 namespace BusinessLayer
 {
-    public class Money
+    public struct Money
     {
-        private decimal amount;
+        private decimal _amount;
         public decimal Amount
         {
-            get { return amount; }
-            set { amount = value; }
+            get { return _amount; }
+            set { _amount = value; }
         }
 
         public enum Currencies
@@ -22,17 +22,17 @@ namespace BusinessLayer
             {Currencies.EUR, "EUR" }
         };
 
-        private Currencies currency;
+        private Currencies _currency;
         public Currencies Currency
         {
-            get { return currency; }
-            set { currency = value; }
+            get { return _currency; }
+            set { _currency = value; }
         }
 
         public Money(decimal amount, Currencies currency)
         {
-            Amount = amount;
-            Currency = currency;
+            _amount = amount;
+            _currency = currency;
         }
 
         public static Money operator+(Money a, Money b)
