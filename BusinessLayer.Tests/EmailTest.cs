@@ -67,29 +67,29 @@ namespace BusinessLayer.Tests
         public void TestDomainExceptions()
         {
             //Arrange, Act, Assert
-            Assert.Throws<ArgumentException>(() => new Email("boublik", "").MailName);
-            Assert.Throws<ArgumentException>(() => new Email("boublik", " ").MailName);
-            Assert.Throws<ArgumentException>(() => new Email("boublik", ",").MailName);
-            Assert.Throws<ArgumentException>(() => new Email("boublik", "+bl").MailName);
-            Assert.Throws<ArgumentException>(() => new Email("boublik", "%$").MailName);
-            Assert.Throws<ArgumentException>(() => new Email("boublik", "0").MailName);
-            Assert.Throws<ArgumentException>(() => new Email("boublik", "1").MailName);
-            Assert.Throws<ArgumentException>(() => new Email("boublik", "6").MailName);
-            Assert.Throws<ArgumentException>(() => new Email("boublik", "1245").MailName);
-            Assert.Throws<ArgumentException>(() => new Email("boublik", "1mail").MailName);
-            Assert.Throws<ArgumentException>(() => new Email("boublik", "ma il").MailName);
-            Assert.Throws<ArgumentException>(() => new Email("boublik", "ma il. com").MailName);
-            Assert.Throws<ArgumentException>(() => new Email("boublik", "ma. il. com").MailName);
-            Assert.Throws<ArgumentException>(() => new Email("boublik", "ma..il. com").MailName);
-            Assert.Throws<ArgumentException>(() => new Email("boublik", "ma .il .com").MailName);
-            Assert.Throws<ArgumentException>(() => new Email("boublik", "ma. .il. com").MailName);
-            Assert.Throws<ArgumentException>(() => new Email("boublik", "ma..il.com").MailName);
-            Assert.Throws<ArgumentException>(() => new Email("boublik", "ma. .il.com").MailName);
-            Assert.Throws<ArgumentException>(() => new Email("boublik", ".mail.com").MailName);
-            Assert.Throws<ArgumentException>(() => new Email("boublik", "..mail.com").MailName);
-            Assert.Throws<ArgumentException>(() => new Email("boublik", "mail.com.").MailName);
-            Assert.Throws<ArgumentException>(() => new Email("boublik", "@mail.com").MailName);
-            Assert.Throws<ArgumentException>(() => new Email("boublik", "24mail.com").MailName);
+            Assert.Throws<ArgumentException>(() => new Email("boublik", "").Domain);
+            Assert.Throws<ArgumentException>(() => new Email("boublik", " ").Domain);
+            Assert.Throws<ArgumentException>(() => new Email("boublik", ",").Domain);
+            Assert.Throws<ArgumentException>(() => new Email("boublik", "+bl").Domain);
+            Assert.Throws<ArgumentException>(() => new Email("boublik", "%$").Domain);
+            Assert.Throws<ArgumentException>(() => new Email("boublik", "0").Domain);
+            Assert.Throws<ArgumentException>(() => new Email("boublik", "1").Domain);
+            Assert.Throws<ArgumentException>(() => new Email("boublik", "6").Domain);
+            Assert.Throws<ArgumentException>(() => new Email("boublik", "1245").Domain);
+            Assert.Throws<ArgumentException>(() => new Email("boublik", "1mail").Domain);
+            Assert.Throws<ArgumentException>(() => new Email("boublik", "ma il").Domain);
+            Assert.Throws<ArgumentException>(() => new Email("boublik", "ma il. com").Domain);
+            Assert.Throws<ArgumentException>(() => new Email("boublik", "ma. il. com").Domain);
+            Assert.Throws<ArgumentException>(() => new Email("boublik", "ma..il. com").Domain);
+            Assert.Throws<ArgumentException>(() => new Email("boublik", "ma .il .com").Domain);
+            Assert.Throws<ArgumentException>(() => new Email("boublik", "ma. .il. com").Domain);
+            Assert.Throws<ArgumentException>(() => new Email("boublik", "ma..il.com").Domain);
+            Assert.Throws<ArgumentException>(() => new Email("boublik", "ma. .il.com").Domain);
+            Assert.Throws<ArgumentException>(() => new Email("boublik", ".mail.com").Domain);
+            Assert.Throws<ArgumentException>(() => new Email("boublik", "..mail.com").Domain);
+            Assert.Throws<ArgumentException>(() => new Email("boublik", "mail.com.").Domain);
+            Assert.Throws<ArgumentException>(() => new Email("boublik", "@mail.com").Domain);
+            Assert.Throws<ArgumentException>(() => new Email("boublik", "24mail.com").Domain);
         }
 
         [Fact]
