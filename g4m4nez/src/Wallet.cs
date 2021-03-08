@@ -94,7 +94,7 @@ namespace BusinessLayer
             Transactions.RemoveTransaction(transaction);
         }
 
-        public Wallet(User owner, string name, int startingBalance, Money.Currencies currency)
+        public Wallet(User owner, string name, decimal startingBalance, Money.Currencies currency)
         {
             users = new UserRegistry(owner);
             Name = name;
