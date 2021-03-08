@@ -91,5 +91,24 @@ namespace BusinessLayer.Tests
             Assert.Equal(expected2, actual2);
             Assert.Equal(expected3, actual3);
         }
+    
+        [Fact]
+        public void testWhetherArgumentsArePassedByValue()
+        {
+            //Arrange
+            var expected1 = new Money(0, Money.Currencies.EUR);
+
+            var description = "";
+            var category = new Category("¯æà", "icon24.png", Category.Colors.MAGENTA);
+            var date = DateTime.Now;
+
+            //Act
+            var amount = new Money(0, Money.Currencies.EUR);
+            var transaction = new Transaction(amount, description, category, date);
+            amount.Amount = 250250250205025025m;
+
+            //Assert
+            Assert.NotEqual(amount.Amount, transaction.Amount.Amount);
+        }
     }
 }
