@@ -3,6 +3,7 @@ namespace BusinessLayer
 {
     public class Wallet
     {
+
         private decimal startingBalance;
         public decimal StartingBalance
         {
@@ -93,11 +94,14 @@ namespace BusinessLayer
             Transactions.RemoveTransaction(transaction);
         }
 
-        public Wallet(string name, int startingBalance, Money.Currencies currency)
+        public Wallet(User owner, string name, int startingBalance, Money.Currencies currency)
         {
+            users = new UserRegistry(owner);
             Name = name;
             this.startingBalance = startingBalance;
             this.currency = currency;
+
+            categories = new WalletCategories(owner.Categories.Categories);
         }
 
     }
