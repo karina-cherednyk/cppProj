@@ -15,10 +15,11 @@ namespace BusinessLayer.Tests
 
             var category = new Category("¯æà", "icon24.png", Category.Colors.MAGENTA);
             var date = DateTime.Now;
+            var user = new User(new PersonName("a", "b"), new Email("mail", "mail.com"));
             //Act
-            var actual1 = new Transaction(expected1, "", category, date).Amount;
-            var actual2 = new Transaction(expected2, "", category, date).Amount;
-            var actual3 = new Transaction(expected3, "", category, date).Amount;
+            var actual1 = new Transaction(user, expected1, "", category, date).Amount;
+            var actual2 = new Transaction(user, expected2, "", category, date).Amount;
+            var actual3 = new Transaction(user, expected3, "", category, date).Amount;
 
             //Assert
             Assert.Equal(expected1, actual1);
@@ -37,10 +38,12 @@ namespace BusinessLayer.Tests
             var amount = new Money(255555m, Money.Currencies.EUR);
             var category = new Category("¯æà", "icon24.png", Category.Colors.MAGENTA);
             var date = DateTime.Now;
+            var user = new User(new PersonName("a", "b"), new Email("mail", "mail.com"));
+
             //Act
-            var actual1 = new Transaction(amount, expected1, category, date).Description;
-            var actual2 = new Transaction(amount, expected2, category, date).Description;
-            var actual3 = new Transaction(amount, expected3, category, date).Description;
+            var actual1 = new Transaction(user, amount, expected1, category, date).Description;
+            var actual2 = new Transaction(user, amount, expected2, category, date).Description;
+            var actual3 = new Transaction(user, amount, expected3, category, date).Description;
 
             //Assert
             Assert.Equal(expected1, actual1);
@@ -59,10 +62,12 @@ namespace BusinessLayer.Tests
             var amount = new Money(255555m, Money.Currencies.EUR);
             var description = "some description..";
             var date = DateTime.Now;
+            var user = new User(new PersonName("a", "b"), new Email("mail", "mail.com"));
+
             //Act
-            var actual1 = new Transaction(amount, description, expected1, date).TransactionCategory;
-            var actual2 = new Transaction(amount, description, expected2, date).TransactionCategory;
-            var actual3 = new Transaction(amount, description, expected3, date).TransactionCategory;
+            var actual1 = new Transaction(user, amount, description, expected1, date).TransactionCategory;
+            var actual2 = new Transaction(user, amount, description, expected2, date).TransactionCategory;
+            var actual3 = new Transaction(user, amount, description, expected3, date).TransactionCategory;
 
             //Assert
             Assert.Equal(expected1, actual1);
@@ -80,11 +85,13 @@ namespace BusinessLayer.Tests
 
             var amount = new Money(255555m, Money.Currencies.EUR);
             var description = "some description..";
-            var category = new Category("Socks", "icon24.png", Category.Colors.MAGENTA); ;
+            var category = new Category("Socks", "icon24.png", Category.Colors.MAGENTA);
+            var user = new User(new PersonName("a", "b"), new Email("mail", "mail.com"));
+
             //Act
-            var actual1 = new Transaction(amount, description, category, expected1).Date;
-            var actual2 = new Transaction(amount, description, category, expected2).Date;
-            var actual3 = new Transaction(amount, description, category, expected3).Date;
+            var actual1 = new Transaction(user, amount, description, category, expected1).Date;
+            var actual2 = new Transaction(user, amount, description, category, expected2).Date;
+            var actual3 = new Transaction(user, amount, description, category, expected3).Date;
 
             //Assert
             Assert.Equal(expected1, actual1);
@@ -101,10 +108,11 @@ namespace BusinessLayer.Tests
             var description = "";
             var category = new Category("¯æà", "icon24.png", Category.Colors.MAGENTA);
             var date = DateTime.Now;
+            var user = new User(new PersonName("a", "b"), new Email("mail", "mail.com"));
 
             //Act
             var amount = new Money(0, Money.Currencies.EUR);
-            var transaction = new Transaction(amount, description, category, date);
+            var transaction = new Transaction(user, amount, description, category, date);
             amount.Amount = 250250250205025025m;
 
             //Assert
