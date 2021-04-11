@@ -1,34 +1,29 @@
-﻿using System.Collections.Generic;
-namespace BusinessLayer
+﻿using System;
+using System.Collections.Generic;
+namespace g4m4nez.BusinessLayer
 {
     public class UserRegistry
     {
-        private User owner;
-        public User Owner
+        private Guid _owner;
+        public Guid Owner => _owner;
+
+        private readonly List<Guid> _users;
+        public List<Guid> Users => _users;
+
+        public UserRegistry(Guid owner)
         {
-            get { return owner; }
+            _owner = owner;
+            _users = new List<Guid>();
         }
 
-        private HashSet<User> users;
-        public HashSet<User> Users
+        public void AddUser(Guid user)
         {
-            get { return users; }
+            _users.Add(user);
         }
 
-        public UserRegistry(User owner)
+        public void RemoveUser(Guid user)
         {
-            this.owner = owner;
-            users = new HashSet<User>();
-        }
-
-        public void AddUser(User user)
-        {
-            users.Add(user);
-        }
-
-        public void RemoveUser(User user)
-        {
-            users.Remove(user);
+            _users.Remove(user);
         }
     }
 }

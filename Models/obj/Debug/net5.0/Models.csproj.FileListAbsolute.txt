@@ -1,0 +1,12 @@
+D:\OneDrive\OneDrive - National University of Kyiv Mohyla Аcademy\Code\Visual Studio 19\C#\g4m4nez\Models\bin\Debug\net5.0\Models.deps.json
+D:\OneDrive\OneDrive - National University of Kyiv Mohyla Аcademy\Code\Visual Studio 19\C#\g4m4nez\Models\bin\Debug\net5.0\Models.dll
+D:\OneDrive\OneDrive - National University of Kyiv Mohyla Аcademy\Code\Visual Studio 19\C#\g4m4nez\Models\bin\Debug\net5.0\ref\Models.dll
+D:\OneDrive\OneDrive - National University of Kyiv Mohyla Аcademy\Code\Visual Studio 19\C#\g4m4nez\Models\bin\Debug\net5.0\Models.pdb
+D:\OneDrive\OneDrive - National University of Kyiv Mohyla Аcademy\Code\Visual Studio 19\C#\g4m4nez\Models\obj\Debug\net5.0\Models.csprojAssemblyReference.cache
+D:\OneDrive\OneDrive - National University of Kyiv Mohyla Аcademy\Code\Visual Studio 19\C#\g4m4nez\Models\obj\Debug\net5.0\Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\OneDrive\OneDrive - National University of Kyiv Mohyla Аcademy\Code\Visual Studio 19\C#\g4m4nez\Models\obj\Debug\net5.0\Models.AssemblyInfoInputs.cache
+D:\OneDrive\OneDrive - National University of Kyiv Mohyla Аcademy\Code\Visual Studio 19\C#\g4m4nez\Models\obj\Debug\net5.0\Models.AssemblyInfo.cs
+D:\OneDrive\OneDrive - National University of Kyiv Mohyla Аcademy\Code\Visual Studio 19\C#\g4m4nez\Models\obj\Debug\net5.0\Models.csproj.CoreCompileInputs.cache
+D:\OneDrive\OneDrive - National University of Kyiv Mohyla Аcademy\Code\Visual Studio 19\C#\g4m4nez\Models\obj\Debug\net5.0\Models.dll
+D:\OneDrive\OneDrive - National University of Kyiv Mohyla Аcademy\Code\Visual Studio 19\C#\g4m4nez\Models\obj\Debug\net5.0\ref\Models.dll
+D:\OneDrive\OneDrive - National University of Kyiv Mohyla Аcademy\Code\Visual Studio 19\C#\g4m4nez\Models\obj\Debug\net5.0\Models.pdb

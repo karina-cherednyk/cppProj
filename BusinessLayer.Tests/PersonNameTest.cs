@@ -1,7 +1,7 @@
-﻿using System;
+﻿using g4m4nez.Models;
 using Xunit;
 
-namespace BusinessLayer.Tests
+namespace g4m4nez.BusinessLayer.Tests
 {
     public class PersonNameTest
     {
@@ -9,18 +9,18 @@ namespace BusinessLayer.Tests
         public void TestName()
         {
             //Arrange
-            var expected1 = "Герман";
-            var expected2 = "Ася";
-            var expected3 = "Elizabeth";
-            var expected4 = "Катерина-Марія";
-            var expected5 = "X Æ A-12";
+            string expected1 = "Герман";
+            string expected2 = "Ася";
+            string expected3 = "Elizabeth";
+            string expected4 = "Катерина-Марія";
+            string expected5 = "X Æ A-12";
 
             //Act
-            var actual1 = new PersonName("Герман", "Thompson").Name;
-            var actual2 = new PersonName("Ася", "Thompson").Name;
-            var actual3 = new PersonName("Elizabeth", "Thompson").Name;
-            var actual4 = new PersonName("Катерина-Марія", "Thompson").Name;
-            var actual5 = new PersonName("X Æ A-12", "Thompson").Name;
+            string actual1 = new PersonName("Герман", "Thompson").Name;
+            string actual2 = new PersonName("Ася", "Thompson").Name;
+            string actual3 = new PersonName("Elizabeth", "Thompson").Name;
+            string actual4 = new PersonName("Катерина-Марія", "Thompson").Name;
+            string actual5 = new PersonName("X Æ A-12", "Thompson").Name;
 
             //Assert
             Assert.Equal(expected1, actual1);
@@ -34,16 +34,16 @@ namespace BusinessLayer.Tests
         public void TestSurname()
         {
             //Arrange
-            var expected1 = "Федоров";
-            var expected2 = "Гавриліна";
-            var expected3 = "Pahomoff";
-            var expected4 = "X Æ A-12";
+            string expected1 = "Федоров";
+            string expected2 = "Гавриліна";
+            string expected3 = "Pahomoff";
+            string expected4 = "X Æ A-12";
 
             //Act
-            var actual1 = new PersonName("Sasha", "Федоров").Surname;
-            var actual2 = new PersonName("Sasha", "Гавриліна").Surname;
-            var actual3 = new PersonName("Sasha", "Pahomoff").Surname;
-            var actual4 = new PersonName("Sasha", "X Æ A-12").Surname;
+            string actual1 = new PersonName("Sasha", "Федоров").Surname;
+            string actual2 = new PersonName("Sasha", "Гавриліна").Surname;
+            string actual3 = new PersonName("Sasha", "Pahomoff").Surname;
+            string actual4 = new PersonName("Sasha", "X Æ A-12").Surname;
 
             //Assert
             Assert.Equal(expected1, actual1);
@@ -56,18 +56,18 @@ namespace BusinessLayer.Tests
         public void TestToString()
         {
             //Arrange
-            var expected1 = "Alexander Gerasimov";
-            var expected2 = "Roger Waters";
-            var expected3 = "Youwont Readit";
-            var expected4 = "Аліна Аліковська";
-            var expected5 = "X Æ A-12 Musk";
+            string expected1 = "Alexander Gerasimov";
+            string expected2 = "Roger Waters";
+            string expected3 = "Youwont Readit";
+            string expected4 = "Аліна Аліковська";
+            string expected5 = "X Æ A-12 Musk";
 
             //Act
-            var actual1 = new PersonName("Alexander", "Gerasimov").ToString();
-            var actual2 = new PersonName("Roger", "Waters").ToString();
-            var actual3 = new PersonName("Youwont", "Readit").ToString();
-            var actual4 = new PersonName("Аліна", "Аліковська").ToString();
-            var actual5 = new PersonName("X Æ A-12", "Musk").ToString();
+            string actual1 = new PersonName("Alexander", "Gerasimov").ToString();
+            string actual2 = new PersonName("Roger", "Waters").ToString();
+            string actual3 = new PersonName("Youwont", "Readit").ToString();
+            string actual4 = new PersonName("Аліна", "Аліковська").ToString();
+            string actual5 = new PersonName("X Æ A-12", "Musk").ToString();
 
 
             //Assert

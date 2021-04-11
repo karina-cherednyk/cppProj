@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using Xunit;
-
-namespace BusinessLayer.Tests
+namespace g4m4nez.BusinessLayer.Tests
 {
     public class WalletCategoriesTest
     {

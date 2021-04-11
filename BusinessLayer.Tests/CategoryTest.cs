@@ -1,7 +1,6 @@
-using System;
 using Xunit;
 
-namespace BusinessLayer.Tests
+namespace g4m4nez.BusinessLayer.Tests
 {
     public class CategoryTest
     {
@@ -9,10 +8,10 @@ namespace BusinessLayer.Tests
         public void TestCategoryName()
         {
             //Arrange
-            var expected1 = "Їжа";
-            var expected2 = "Guitars";
-            var expected3 = "Секс-іграшки";
-            var expected4 = "Theatre";
+            string expected1 = "Їжа";
+            string expected2 = "Guitars";
+            string expected3 = "Секс-іграшки";
+            string expected4 = "Theatre";
 
             //Act
             var actual1 = new Category(expected1, "icon.png", Category.Colors.BLACK).Name;
@@ -31,10 +30,10 @@ namespace BusinessLayer.Tests
         public void TestIcon()
         {
             //Arrange
-            var expected1 = "icon24.png";
-            var expected2 = "/data/assets/icon24.png";
-            var expected3 = "picture";
-            var expected4 = "pstrn.jpg";
+            string expected1 = "icon24.png";
+            string expected2 = "/data/assets/icon24.png";
+            string expected3 = "picture";
+            string expected4 = "pstrn.jpg";
 
             //Act
             var actual1 = new Category("Їжа", expected1, Category.Colors.BLACK).Icon;

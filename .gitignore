@@ -4,6 +4,16 @@
 
 /.vs
 /BusinessLayer.Tests/obj
-/BusinessLayer.Tests/bin/Debug/netcoreapp3.1
-/g4m4nez/bin/Debug/netcoreapp3.1
+/BusinessLayer.Tests/bin
+/g4m4nez/bin
 /g4m4nez/obj
+/DataAccessLayer/bin
+/DataAccessLayer/obj
+/g4m4nezWPF/g4m4nezWPF/bin
+/g4m4nezWPF/g4m4nezWPF/obj
+/Models/obj
+/Models/bin
+/Services/obj
+/Services/bin
+/Utils/obj
+/Utils/bin

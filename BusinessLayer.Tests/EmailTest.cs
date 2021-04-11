@@ -1,7 +1,6 @@
-using System;
 using Xunit;
 
-namespace BusinessLayer.Tests
+namespace g4m4nez.BusinessLayer.Tests
 {
     public class EmailTest
     {
@@ -9,9 +8,9 @@ namespace BusinessLayer.Tests
         public void TestMailName()
         {
             //Arrange
-            var expected1 = "boublik";
-            var expected2 = "a";
-            var expected3 = "n4gib4t0r";
+            string expected1 = "boublik";
+            string expected2 = "a";
+            string expected3 = "n4gib4t0r";
 
             //Act
             var actual1 = new Email("boublik", "ukma.edu.ua").MailName;
@@ -28,10 +27,10 @@ namespace BusinessLayer.Tests
         public void TestDomain()
         {
             //Arrange
-            var expected1 = "ukma.edu.ua";
-            var expected2 = "gmail.com";
-            var expected3 = "m.net";
-            var expected4 = "m.c";
+            string expected1 = "ukma.edu.ua";
+            string expected2 = "gmail.com";
+            string expected3 = "m.net";
+            string expected4 = "m.c";
 
             //Act
             var actual1 = new Email("boublik", "ukma.edu.ua").Domain;
@@ -50,10 +49,10 @@ namespace BusinessLayer.Tests
         public void TestToString()
         {
             //Arrange
-            var expected1 = "boublik@ukma.edu.ua";
-            var expected2 = "boublik@gmail.com";
-            var expected3 = "a@m.net";
-            var expected4 = "a@m.c";
+            string expected1 = "boublik@ukma.edu.ua";
+            string expected2 = "boublik@gmail.com";
+            string expected3 = "a@m.net";
+            string expected4 = "a@m.c";
 
             //Act
             var actual1 = new Email("boublik", "ukma.edu.ua").ToString();

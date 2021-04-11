@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace BusinessLayer.Tests
+namespace g4m4nez.BusinessLayer.Tests
 {
     public class MoneyTest
     {
@@ -9,11 +9,11 @@ namespace BusinessLayer.Tests
         public void TestAmount()
         {
             //Arrange
-            var expected1 = 200.0m;
-            var expected2 = 17.85m;
-            var expected3 = 10000000000.0m;
-            var expected4 = -836.43m;
-            var expected5 = 0m;
+            decimal expected1 = 200.0m;
+            decimal expected2 = 17.85m;
+            decimal expected3 = 10000000000.0m;
+            decimal expected4 = -836.43m;
+            decimal expected5 = 0m;
 
             //Act
             var actual1 = new Money(200.0m, Money.Currencies.UAH).Amount;
@@ -182,9 +182,9 @@ namespace BusinessLayer.Tests
         public void TestToString()
         {
             //Arrange
-            var expected1 = "200,0 UAH";
-            var expected2 = "-251,44 USD";
-            var expected3 = "0,0 EUR";
+            string expected1 = "200,0 UAH";
+            string expected2 = "-251,44 USD";
+            string expected3 = "0,0 EUR";
 
             //Act
             var actual1 = new Money(200.0m, Money.Currencies.UAH).ToString();

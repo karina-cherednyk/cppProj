@@ -1,62 +1,75 @@
-﻿using System.Collections.Generic;
+﻿using g4m4nez.DataAccessLayer;
+using g4m4nez.Models;
 using System;
-namespace BusinessLayer
+using System.Collections.Generic;
+using System.Text.Json.Serialization;
+
+namespace g4m4nez.BusinessLayer
 {
-    public class Wallet
+    [Serializable]
+    public class Wallet : IStorable
     {
-        private decimal startingBalance;
+        private readonly FileDataStorage<DBUser> _dbUsers = new FileDataStorage<DBUser>();
+
+        private Guid _guid;
+        private decimal _startingBalance;
+        private string _name;
+        private string _description;
+        private Money.Currencies _currency;
+        private readonly TransactionChain _transactions;
+        private readonly WalletCategories _categories;
+        private readonly UserRegistry _users;
+
+
+        public Guid Guid
+        {
+            get => _guid;
+            set => _guid = value;
+        }
         public decimal StartingBalance
         {
-            get { return startingBalance; }
+            get => _startingBalance;
+            set => _startingBalance = value;
         }
-
-        private string name;
         public string Name
         {
-            get { return name; }
-            set { name = value; }
+            get => _name;
+            set => _name = value;
         }
-
-        private string description;
         public string Description
         {
-            get { return description; }
-            set { description = value; }
+            get { return _description; }
+            set { _description = value; }
         }
-
-        private Money.Currencies currency;
         public Money.Currencies Currency
         {
-            get { return currency; }
+            get { return _currency; }
+            set { _currency = value; }
         }
-
-        private TransactionChain transactions;
         public TransactionChain Transactions
         {
-            get { return transactions; }
+            get { return _transactions; }
         }
-
-        private WalletCategories categories;
         public WalletCategories Categories
         {
-            get { return categories; }
+            get { return _categories; }
         }
-
-        private UserRegistry users;
         public UserRegistry Users
         {
-            get { return users; }
+            get { return _users; }
+
         }
 
-        public void AddUser(User user)
+        public async void AddUser(Guid userGuid)
         {
-            Users.AddUser(user);
-            Categories.AddUserCategories(user);
+            Users.AddUser(userGuid);
+            User user = new(await _dbUsers.GetAsync(userGuid));
+            Categories.AddUserCategories(new(await _dbUsers.GetAsync(userGuid)));
         }
 
-        public void RemoveUser(User user)
+        public void RemoveUser(Guid userGuid)
         {
-            Users.RemoveUser(user);
+            Users.RemoveUser(userGuid);
         }
 
         public void AddCategory(Category category)
@@ -96,17 +109,40 @@ namespace BusinessLayer
 
         public bool IsOwner(User user)
         {
-            return user == Users.Owner;
+            return user.Guid == Users.Owner;
         }
 
-        public Wallet(User owner, string name, decimal startingBalance, Money.Currencies currency)
+        public Wallet(Guid ownerGuid, string name, string description, decimal startingBalance, Money.Currencies currency)
         {
-            users = new UserRegistry(owner);
-            Name = name;
-            this.startingBalance = startingBalance;
-            this.currency = currency;
+            _guid = Guid.NewGuid();
 
-            categories = new WalletCategories(owner.Categories.Categories);
+            _users = new UserRegistry(ownerGuid);
+            _transactions = new TransactionChain(_currency);
+
+            // TODO: impl guid/repo for categories
+            //DBUser owner        = Task.Run<DBUser>(async () => await _dbUsers.GetAsync(ownerGuid)).Result;
+            //this._categories    = new WalletCategories(owner.Categories.Categories);
+
+            Name = name;
+            Description = description;
+            _startingBalance = startingBalance;
+            _currency = currency;
+        }
+
+        [JsonConstructor]
+        public Wallet(string name, string description, decimal startingBalance, Money.Currencies currency,
+            Guid guid, UserRegistry users, TransactionChain transactions, WalletCategories categories)
+        {
+            _guid = guid;
+
+            _users = users;
+            _transactions = transactions;
+            _categories = categories;
+
+            Name = name;
+            Description = description;
+            _startingBalance = startingBalance;
+            _currency = currency;
         }
 
     }

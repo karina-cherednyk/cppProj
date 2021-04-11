@@ -1,58 +1,57 @@
-﻿using System.Collections.Generic;
+﻿using g4m4nez.Models;
 using System;
-namespace BusinessLayer
+using System.Collections.Generic;
+
+namespace g4m4nez.BusinessLayer
 {
     public class TransactionChain
     {
         // Heap of binary search tree would be a better choice
         // Since it'd provide us with transactions sorted by date
-        private List<Transaction> transactions;
-        public List<Transaction> Transactions
-        {
-            get { return transactions; }
-        }
+        private readonly List<Transaction> transactions;
+        public List<Transaction> Transactions => transactions;
 
-        private Money.Currencies currency;
-        public Money.Currencies Currency
-        {
-            get { return currency; }
-        }
+        private readonly Money.Currencies currency;
+        public Money.Currencies Currency => currency;
 
         private Money currentAmount;
-        public Money CurrentAmount
-        {
-            get { return currentAmount; }
-        }
+        public Money CurrentAmount => currentAmount;
 
-        public Money MonthIncome
+        public Money MonthlyChange(bool positive, int months)
         {
-            get {
-                DateTime PreviousMonth = DateTime.Now.AddMonths(-1);
-                Money amount = new Money(0, Currency);
-                foreach (Transaction transaction in Transactions)
+            DateTime PreviousDate = DateTime.Now.AddMonths(-months);
+            Money amount = new Money(0, Currency);
+            foreach (Transaction transaction in Transactions)
+            {
+                if (transaction.Date > PreviousDate && 
+                    ((transaction.Amount.Amount > 0 && positive) 
+                    || (transaction.Amount.Amount < 0 && !positive)))
                 {
-                    if (transaction.Date > PreviousMonth && transaction.Amount.Amount > 0)
+                    // Math.Abs would make sense if Amount wasn't a Money object
+                    if (positive)
                     {
                         amount += transaction.Amount;
                     }
+                    else
+                    {
+                        amount -= transaction.Amount;
+                    }
                 }
-                return amount; 
+            }
+            return amount;
+        }
+        public Money MonthIncome
+        {
+            get
+            {
+                return MonthlyChange(true, 1);
             }
         }
         public Money MonthExpences
         {
             get
             {
-                DateTime PreviousMonth = DateTime.Now.AddMonths(-1);
-                Money amount = new Money(0, Currency);
-                foreach (Transaction transaction in Transactions)
-                {
-                    if (transaction.Date > PreviousMonth && transaction.Amount.Amount < 0)
-                    {
-                        amount -= transaction.Amount; // Since we're considering only negative amounts
-                    }
-                }
-                return amount;
+                return MonthlyChange(false, 1);
             }
         }
 
@@ -78,14 +77,14 @@ namespace BusinessLayer
         public TransactionChain(Money.Currencies currency)
         {
             this.currency = currency;
-            currentAmount = new Money(0, currency);
-            transactions = new List<Transaction>();
+            currentAmount = new(0, currency);
+            transactions = new();
         }
 
         public List<Transaction> GetLastNTransactions(int n)
         {
             int num = Transactions.Count - 1;
-            List<Transaction> result = new List<Transaction>();
+            List<Transaction> result = new();
             for (int i = num; i >= 0 && i >= num - n; --i)
             {
                 result.Add(Transactions[i]);

@@ -1,19 +1,15 @@
-﻿using System.Collections.Generic;
-namespace BusinessLayer
+﻿using g4m4nez.Models;
+using System.Collections.Generic;
+
+namespace g4m4nez.BusinessLayer
 {
     public class WalletCategories
     {
-        private HashSet<Category> allCategories;
-        public HashSet<Category> AllCategories
-        {
-            get { return allCategories; }
-        }
+        private readonly HashSet<Category> allCategories;
+        public HashSet<Category> AllCategories => allCategories;
 
-        private Dictionary<Category, bool> activeCaterogies;
-        public Dictionary<Category, bool> ActiveCategories
-        {
-            get { return activeCaterogies; }
-        }
+        private readonly Dictionary<Category, bool> activeCaterogies;
+        public Dictionary<Category, bool> ActiveCategories => activeCaterogies;
 
         public void AddCategory(Category category)
         {

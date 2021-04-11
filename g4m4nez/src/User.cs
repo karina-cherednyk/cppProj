@@ -1,35 +1,65 @@
-﻿using System.Collections.Generic;
+﻿using g4m4nez.DataAccessLayer;
+using g4m4nez.Models;
 using System;
-namespace BusinessLayer
+
+namespace g4m4nez.BusinessLayer
 {
-    public class User
+    public class User : IStorable
     {
-        private PersonName name;
+        private Guid _guid;
+        private string _login;
+        private PersonName _name;
+        private Email _email;
+        private readonly UserCategories _categories;
+        private readonly WalletRegistry _wallets;
+        public Guid Guid
+        {
+            get => _guid;
+            private set => _guid = value;
+        }
+        public string Login
+        {
+            get => _login;
+            set => _login = value;
+        }
         public PersonName Name
         {
-            get { return name; }
-            set { name = value; }
+            get => _name;
+            set => _name = value;
         }
-
-
-        private Email email;
         public Email Email
         {
-            get { return email; }
-            set { email = value; }
+            get => _email;
+            set => _email = value;
         }
-
-        private UserCategories categories;
-        public UserCategories Categories
-        {
-            get { return categories; }
-        }
-
+        public UserCategories Categories => _categories;
+        public WalletRegistry Wallets => _wallets;
         public User(PersonName name, Email email)
         {
             Name = name;
             Email = email;
-            categories = new UserCategories();
+            _categories = new UserCategories();
         }
+
+        public User(Guid guid, PersonName name, Email email, string login)
+        {
+            _guid = guid;
+            Name = name;
+            Email = email;
+            Login = login;
+            _categories = new();
+            _wallets = new();
+        }
+
+        public User(DBUser other)
+        {
+            _guid = other.Guid;
+            Name = other.Name;
+            Email = other.Email;
+            Login = other.Login;
+            _categories = other.Categories;
+            _wallets = other.Wallets;
+        }
+
     }
 }
