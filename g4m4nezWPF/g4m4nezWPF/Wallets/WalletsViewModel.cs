@@ -1,19 +1,27 @@
 ﻿using g4m4nez.BusinessLayer;
 using g4m4nez.GUI.WPF.Navigation;
 using g4m4nez.Services;
+using g4m4nez.Utils;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows;
+using g4m4nez.Models;
 
 namespace g4m4nez.GUI.WPF.Wallets
 {
     public class WalletsViewModel : BindableBase, INavigatable<MainNavigatableTypes>
     {
+
         public static readonly WalletService _walletSevice = new();
         private WalletDetailsViewModel _currentWallet;
+
         public static ObservableCollection<WalletDetailsViewModel> Wallets { get; set; }
+
+        public ObservableCollection<ITab> Tabs { get; }
+
+        private WalletDetailsViewModel _currentWallet; // <--- TODO: could be transaction, category... use interface for them?
 
         public WalletDetailsViewModel CurrentWallet
         {
@@ -28,6 +36,10 @@ namespace g4m4nez.GUI.WPF.Wallets
         public WalletsViewModel(Action gotoSignIn, Action goToAddWallet)
         {
             Wallets = new ObservableCollection<WalletDetailsViewModel>();
+            Tabs    = new ObservableCollection<ITab>();
+            //Tabs.Add(new WalletDetailsViewModel(_currentWallet.FromWallet));
+            Tabs.Add(new WalletDetailsViewModel(new Wallet(Guid.NewGuid(), "name", "", 25m, Money.Currencies.EUR)));
+            Tabs.Add(new WalletDetailsViewModel(new Wallet(Guid.NewGuid(), "name", "", 25m, Money.Currencies.EUR)));
 
             AddWalletCommand = new DelegateCommand(goToAddWallet);
             SignInCommand = new DelegateCommand(gotoSignIn);

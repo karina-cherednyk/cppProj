@@ -1,4 +1,5 @@
 using System;
+using g4m4nez.Models;
 using Xunit;
 
 namespace g4m4nez.BusinessLayer.Tests
@@ -17,9 +18,9 @@ namespace g4m4nez.BusinessLayer.Tests
             DateTime date = DateTime.Now;
             User user = new User(new PersonName("a", "b"), new Email("mail", "mail.com"));
             //Act
-            Models.Money actual1 = new Transaction(user, expected1, "", category, date).Amount;
-            Models.Money actual2 = new Transaction(user, expected2, "", category, date).Amount;
-            Models.Money actual3 = new Transaction(user, expected3, "", category, date).Amount;
+            Models.Money actual1 = new Transaction(user.Guid, expected1, "", category, date).Amount;
+            Models.Money actual2 = new Transaction(user.Guid, expected2, "", category, date).Amount;
+            Models.Money actual3 = new Transaction(user.Guid, expected3, "", category, date).Amount;
 
             //Assert
             Assert.Equal(expected1, actual1);
@@ -41,9 +42,9 @@ namespace g4m4nez.BusinessLayer.Tests
             User user = new User(new PersonName("a", "b"), new Email("mail", "mail.com"));
 
             //Act
-            string actual1 = new Transaction(user, amount, expected1, category, date).Description;
-            string actual2 = new Transaction(user, amount, expected2, category, date).Description;
-            string actual3 = new Transaction(user, amount, expected3, category, date).Description;
+            string actual1 = new Transaction(user.Guid, amount, expected1, category, date).Description;
+            string actual2 = new Transaction(user.Guid, amount, expected2, category, date).Description;
+            string actual3 = new Transaction(user.Guid, amount, expected3, category, date).Description;
 
             //Assert
             Assert.Equal(expected1, actual1);
@@ -65,9 +66,9 @@ namespace g4m4nez.BusinessLayer.Tests
             User user = new User(new PersonName("a", "b"), new Email("mail", "mail.com"));
 
             //Act
-            Models.Category actual1 = new Transaction(user, amount, description, expected1, date).TransactionCategory;
-            Models.Category actual2 = new Transaction(user, amount, description, expected2, date).TransactionCategory;
-            Models.Category actual3 = new Transaction(user, amount, description, expected3, date).TransactionCategory;
+            Models.Category actual1 = new Transaction(user.Guid, amount, description, expected1, date).TransactionCategory;
+            Models.Category actual2 = new Transaction(user.Guid, amount, description, expected2, date).TransactionCategory;
+            Models.Category actual3 = new Transaction(user.Guid, amount, description, expected3, date).TransactionCategory;
 
             //Assert
             Assert.Equal(expected1, actual1);
@@ -89,9 +90,9 @@ namespace g4m4nez.BusinessLayer.Tests
             User user = new User(new PersonName("a", "b"), new Email("mail", "mail.com"));
 
             //Act
-            DateTime actual1 = new Transaction(user, amount, description, category, expected1).Date;
-            DateTime actual2 = new Transaction(user, amount, description, category, expected2).Date;
-            DateTime actual3 = new Transaction(user, amount, description, category, expected3).Date;
+            DateTime actual1 = new Transaction(user.Guid, amount, description, category, expected1).Date;
+            DateTime actual2 = new Transaction(user.Guid, amount, description, category, expected2).Date;
+            DateTime actual3 = new Transaction(user.Guid, amount, description, category, expected3).Date;
 
             //Assert
             Assert.Equal(expected1, actual1);
@@ -112,7 +113,7 @@ namespace g4m4nez.BusinessLayer.Tests
 
             //Act
             var amount = new Money(0, Money.Currencies.EUR);
-            Transaction transaction = new Transaction(user, amount, description, category, date);
+            Transaction transaction = new Transaction(user.Guid, amount, description, category, date);
             amount.Amount = 250250250205025025m;
 
             //Assert

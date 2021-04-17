@@ -1,25 +1,41 @@
 ﻿using g4m4nez.BusinessLayer;
 using g4m4nez.Models;
 using g4m4nez.Services;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using g4m4nez.Utils;
+using Prism.Mvvm;
 
 namespace g4m4nez.GUI.WPF.Wallets
 {
-    class WalletCategoriesViewModel
+    public class WalletCategoriesViewModel : BindableBase, ITab
     {
-        private readonly WalletService _service;
+        public string TabName { get; set; }
 
+        private readonly WalletService _service;
         private readonly Wallet _wallet;
+        private Category _currentCategory;
+        private Category _selectedCategory; // from ComboBox, for example
+
         public Wallet FromWallet => _wallet;
 
-        private Category _selectedCategory;
+        public Category CurrentCategory
+        {
+            get => _currentCategory;
+            set
+            {
+                _currentCategory = value;
+                RaisePropertyChanged();
+            }
+        }
+
         public static ObservableCollection<Category> WalletCategoriesAdded { get; set; }
         public static ObservableCollection<Category> WalletCategoriesAvailable { get; set; }
+
+        WalletCategoriesViewModel()
+        {
+            TabName = "Categories";
+        }
 
         public async void AddWalletCategory()
         {

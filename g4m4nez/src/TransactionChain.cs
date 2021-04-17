@@ -20,7 +20,7 @@ namespace g4m4nez.BusinessLayer
         public Money MonthlyChange(bool positive, int months)
         {
             DateTime PreviousDate = DateTime.Now.AddMonths(-months);
-            Money amount = new Money(0, Currency);
+            Money amount = new(0, Currency);
             foreach (Transaction transaction in Transactions)
             {
                 if (transaction.Date > PreviousDate && 

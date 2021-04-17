@@ -18,11 +18,10 @@
         </Grid.ColumnDefinitions>
         
         <!--Header -->
-        <wpf:Header></wpf:Header>
+		<wpf:MainWindowHeader></wpf:MainWindowHeader>
 
-
-            <!--Main Control -->
-      <wpf:MainView Grid.Row="1"></wpf:MainView>
+        <!--Main Control -->
+		<wpf:MainWindowContentView Grid.Row="1"></wpf:MainWindowContentView>
 
     </Grid>
 

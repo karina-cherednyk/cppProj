@@ -3,11 +3,11 @@
 namespace g4m4nez.GUI.WPF
 {
     /// <summary>
-    /// Interaction logic for Header.xaml
+    /// Interaction logic for MainWindowHeader.xaml
     /// </summary>
-    public partial class Header : UserControl
+    public partial class MainWindowHeader : UserControl
     {
-        public Header()
+        public MainWindowHeader()
         {
             InitializeComponent();
         }

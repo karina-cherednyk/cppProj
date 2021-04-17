@@ -40,9 +40,8 @@
             <TextBlock Margin=" 10,10,10,5">Main currency</TextBlock>
            <TextBox  MinWidth="300" Margin="10" HorizontalAlignment="Stretch" IsReadOnly="True" Text="{Binding MainCurrency, Mode=OneWay, UpdateSourceTrigger=LostFocus  }"></TextBox>
        </StackPanel>
-
-
-                <Button Grid.Row="4"  Margin=" 10,10,10,5" Width="200" Command="{Binding SubmitChangesCommand}">Submit changes</Button>
+	            
+	            <Button Grid.Row="4"  Margin=" 10,10,10,5" Width="200" Command="{Binding SubmitChangesCommand}">Submit changes</Button>
 
 
     </Grid>

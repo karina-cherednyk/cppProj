@@ -1,12 +1,15 @@
 ﻿using g4m4nez.BusinessLayer;
 using g4m4nez.Models;
 using System.Threading.Tasks;
+using g4m4nez.Utils;
 using Prism.Commands;
 using Prism.Mvvm;
 namespace g4m4nez.GUI.WPF.Wallets
 {
-    public class WalletDetailsViewModel : BindableBase
+    public class WalletDetailsViewModel : BindableBase, ITab
     {
+        public string TabName { get; set; } = "Info";
+
         private readonly Wallet _wallet;
         public Wallet FromWallet => _wallet;
 

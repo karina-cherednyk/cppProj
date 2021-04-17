@@ -4,9 +4,9 @@ using g4m4nez.GUI.WPF.Wallets;
 
 namespace g4m4nez.GUI.WPF
 {
-    public class MainViewModel : NavigationBase<MainNavigatableTypes>
+    public class MainWindowContentViewModel : NavigationBase<MainNavigatableTypes>
     {
-        public MainViewModel()
+        public MainWindowContentViewModel()
         {
             Navigate(MainNavigatableTypes.Auth);
         }

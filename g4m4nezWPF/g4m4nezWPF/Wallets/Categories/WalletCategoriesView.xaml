@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="g4m4nez.GUI.WPF.Wallets.WalletCategoriesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:g4m4nez.GUI.WPF.Wallets" d:DataContext="{d:DesignInstance Type=local:WalletCategoriesViewModel}"
+			 mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="*"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+		</Grid.RowDefinitions>
+
+	    <Grid.ColumnDefinitions>
+		    <ColumnDefinition Width="1*" MinWidth="200"></ColumnDefinition>
+		    <ColumnDefinition Width="2"></ColumnDefinition>
+		    <ColumnDefinition Width="2*"></ColumnDefinition>
+	    </Grid.ColumnDefinitions>
+
+	    <Button Grid.Row="0" Grid.Column="0"  Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="MediumSeaGreen" Foreground="White"
+	            Command="{Binding AddWalletCategoryCommand}" Content="Add category to wallet"/>
+
+	    <ComboBox Grid.Row="0" Grid.Column="2" Width="300" Name="WalletCategoriesAvailable" ItemsSource="{Binding WalletCategoriesAvailable}"
+	              DisplayMemberPath="Name" SelectedItem="{Binding SelectedCategory}" Height="50"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+
+		<!--Existing categories-->
+		<ListView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding WalletCategoriesAdded}" DisplayMemberPath="DisplayName" SelectedItem="{Binding CurrentCategory}"></ListView>
+
+	</Grid>
+
+</UserControl>

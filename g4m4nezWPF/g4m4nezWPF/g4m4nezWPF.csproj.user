@@ -7,6 +7,11 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Wallets\Categories\WalletCategoriesView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="Authentication\AuthView.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -16,14 +21,16 @@
     <Page Update="Authentication\SignUpView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Header.xaml">
+    <Page Update="MainWindowHeader.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MainView.xaml">
+    <Page Update="MainWindowContentView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Wallets\Categories\WalletCategoriesView.xaml">
     </Page>
     <Page Update="Wallets\Transactions\AddTransactionView.xaml">
       <SubType>Designer</SubType>

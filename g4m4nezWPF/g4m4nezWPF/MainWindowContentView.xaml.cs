@@ -5,12 +5,12 @@ namespace g4m4nez.GUI.WPF
     /// <summary>
     /// Interaction logic for MainView.xaml
     /// </summary>
-    public partial class MainView : UserControl
+    public partial class MainWindowContentView : UserControl
     {
-        public MainView()
+        public MainWindowContentView()
         {
             InitializeComponent();
-            DataContext = new MainViewModel();
+            DataContext = new MainWindowContentViewModel();
         }
 
 

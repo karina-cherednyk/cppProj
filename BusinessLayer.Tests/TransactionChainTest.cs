@@ -1,4 +1,5 @@
 ﻿using System;
+using g4m4nez.Models;
 using Xunit;
 
 namespace g4m4nez.BusinessLayer.Tests
@@ -22,8 +23,8 @@ namespace g4m4nez.BusinessLayer.Tests
 
             User user = new User(new PersonName("a", "b"), new Email("mail", "mail.com"));
 
-            Transaction t1 = new Transaction(user, money1, "thug life", category, date);
-            Transaction t2 = new Transaction(user, money2, "salary..", category, date);
+            Transaction t1 = new Transaction(user.Guid, money1, "thug life", category, date);
+            Transaction t2 = new Transaction(user.Guid, money2, "salary..", category, date);
 
             Assert.Throws<ArgumentException>(() => tc1.AddTransaction(t2));
             Assert.Throws<ArgumentException>(() => tc2.AddTransaction(t1));
@@ -45,8 +46,8 @@ namespace g4m4nez.BusinessLayer.Tests
             DateTime date = DateTime.Now;
             User user = new User(new PersonName("a", "b"), new Email("mail", "mail.com"));
 
-            Transaction t1 = new Transaction(user, money1, "thug life", category, date);
-            Transaction t2 = new Transaction(user, money2, "salary..", category, date);
+            Transaction t1 = new Transaction(user.Guid, money1, "thug life", category, date);
+            Transaction t2 = new Transaction(user.Guid, money2, "salary..", category, date);
 
             tc1.AddTransaction(t1);
 
@@ -74,9 +75,9 @@ namespace g4m4nez.BusinessLayer.Tests
             DateTime date3 = DateTime.Now;
             User user = new User(new PersonName("a", "b"), new Email("mail", "mail.com"));
 
-            Transaction t1 = new Transaction(user, money1, "thug life", category1, date1);
-            Transaction t2 = new Transaction(user, money2, "salary..", category2, date2);
-            Transaction t3 = new Transaction(user, money2, "I'm miserable", category2, date3);
+            Transaction t1 = new Transaction(user.Guid, money1, "thug life", category1, date1);
+            Transaction t2 = new Transaction(user.Guid, money2, "salary..", category2, date2);
+            Transaction t3 = new Transaction(user.Guid, money2, "I'm miserable", category2, date3);
 
             //Act
             TransactionChain actual1 = new TransactionChain(currency);
@@ -117,9 +118,9 @@ namespace g4m4nez.BusinessLayer.Tests
 
             for (int i = 0; i < 100; ++i)
             {
-                actual1.AddTransaction(new Transaction(user, incomeMoney, "thug life", category1, DateTime.Today.AddDays(-i)));
-                actual1.AddTransaction(new Transaction(user, expencesMoney, "thug life", category1, DateTime.Today.AddDays(-i)));
-                actual1.AddTransaction(new Transaction(user, incomeMoney, "thug life", category1, DateTime.Today.AddDays(-i)));
+                actual1.AddTransaction(new Transaction(user.Guid, incomeMoney, "thug life", category1, DateTime.Today.AddDays(-i)));
+                actual1.AddTransaction(new Transaction(user.Guid, expencesMoney, "thug life", category1, DateTime.Today.AddDays(-i)));
+                actual1.AddTransaction(new Transaction(user.Guid, incomeMoney, "thug life", category1, DateTime.Today.AddDays(-i)));
             }
 
             //Assert
