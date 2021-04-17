@@ -5,9 +5,9 @@ namespace g4m4nez.GUI.WPF.Wallets
     /// <summary>
     /// Interaction logic for WalletsView.xaml
     /// </summary>
-    public partial class TransactionsView : UserControl
+    public partial class WalletsView : UserControl
     {
-        public TransactionsView()
+        public WalletsView()
         {
             InitializeComponent();
         }

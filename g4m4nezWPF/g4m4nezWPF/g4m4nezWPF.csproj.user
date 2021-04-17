@@ -25,5 +25,14 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Wallets\Transactions\AddTransactionView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Wallets\Transactions\TransactionsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Wallets\Transactions\TransactionDetailsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 </Project>

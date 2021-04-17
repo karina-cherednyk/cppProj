@@ -1,3 +1,4 @@
+using g4m4nez.Models;
 using Xunit;
 
 namespace g4m4nez.BusinessLayer.Tests

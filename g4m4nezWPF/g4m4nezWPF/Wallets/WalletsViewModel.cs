@@ -11,7 +11,7 @@ namespace g4m4nez.GUI.WPF.Wallets
 {
     public class WalletsViewModel : BindableBase, INavigatable<MainNavigatableTypes>
     {
-        public static readonly WalletService WalletSevice = new();
+        public static readonly WalletService _walletSevice = new();
         private WalletDetailsViewModel _currentWallet;
         public static ObservableCollection<WalletDetailsViewModel> Wallets { get; set; }
 
@@ -39,7 +39,7 @@ namespace g4m4nez.GUI.WPF.Wallets
         public static void UpdateWalletsCollection()
         {
             Wallets.Clear();
-            var allSavedWallets = WalletSevice.GetWallets();
+            var allSavedWallets = _walletSevice.GetWallets();
             foreach (var wallet in allSavedWallets)
                 if (wallet.IsOwner(CurrentSession.User))
                     Wallets.Add(new WalletDetailsViewModel(wallet));
@@ -52,14 +52,14 @@ namespace g4m4nez.GUI.WPF.Wallets
 
         public async void EditWallet()
         {
-            await WalletSevice.AddOrUpdateWalletAsync(CurrentWallet.FromWallet);
+            await _walletSevice.AddOrUpdateWalletAsync(CurrentWallet.FromWallet);
         }
 
         public void DeleteWallet()
         {
             try
             {
-                WalletSevice.DeleteWallet(CurrentWallet.FromWallet);
+                _walletSevice.DeleteWallet(CurrentWallet.FromWallet);
                 Wallets.Remove(CurrentWallet);
             }
             catch (Exception)

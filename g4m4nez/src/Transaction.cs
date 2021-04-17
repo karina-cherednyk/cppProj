@@ -14,7 +14,11 @@ namespace g4m4nez.BusinessLayer
             set => _amount = value;
         }
 
-        public Money.Currencies Currency => _amount.Currency;
+        public Money.Currencies Currency
+        {
+            get => _amount.Currency;
+            set => _amount.Currency = value;
+        }
 
         private string _description;
         public string Description

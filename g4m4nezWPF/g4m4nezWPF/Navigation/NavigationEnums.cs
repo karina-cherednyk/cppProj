@@ -10,6 +10,7 @@
     {
         Auth,
         Wallets,
-        AddWallet
+        AddWallet,
+        AddTransaction
     }
 }

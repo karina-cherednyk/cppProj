@@ -26,4 +26,16 @@
     <Resource Include="Resources\g4m4nez_logo.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="Wallets\Transactions\AddTransactionView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="Wallets\Transactions\TransactionsView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="Wallets\Transactions\TransactionDetailsView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+  </ItemGroup>
+
 </Project>

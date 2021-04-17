@@ -46,7 +46,7 @@ namespace g4m4nez.GUI.WPF.Wallets
         public DelegateCommand SubmitChangesCommand { get; }
         public async void SubmitChanges()
         {
-            await WalletsViewModel.WalletSevice.AddOrUpdateWalletAsync(_wallet);
+            await WalletsViewModel._walletSevice.AddOrUpdateWalletAsync(_wallet);
             RaisePropertyChanged(nameof(DisplayName));
             return;
         }

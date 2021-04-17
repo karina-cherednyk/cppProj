@@ -53,22 +53,24 @@ namespace g4m4nez.Services
             return wallet;
         }
 
-        public async void CreateTransaction(Guid userID, Guid walletID, Money amount, string description,
+        public async Task<Transaction> CreateTransaction(Guid userID, Guid walletID, Money amount, string description,
                                             Category category, DateTime date)
         {
             Wallet wallet = await _wallets.GetAsync(walletID);
             Transaction transaction = new(userID, amount, description, category, date);
             wallet.AddTransaction(transaction);
             await _wallets.AddOrUpdateAsync(wallet); // TODO: may be buggy
+            return transaction;
         }
 
-        public async void CreateTransaction(Guid userID, Guid walletID, Money amount, string description,
+        public async Task<Transaction> CreateTransaction(Guid userID, Guid walletID, Money amount, string description,
                                             Category category, DateTime date, List<string> attachments)
         {
             Wallet wallet = await _wallets.GetAsync(walletID);
             Transaction transaction = new(userID, amount, description, category, date, attachments);
             wallet.AddTransaction(transaction);
             await _wallets.AddOrUpdateAsync(wallet); // TODO: may be buggy
+            return transaction;
         }
 
         public async void CreateCategory(Guid userID, string name, string description, string icon, Category.Colors color)
