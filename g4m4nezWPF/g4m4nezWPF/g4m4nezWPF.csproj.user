@@ -41,5 +41,8 @@
     <Page Update="Wallets\Transactions\TransactionDetailsView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Wallets\WalletDetailsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 </Project>

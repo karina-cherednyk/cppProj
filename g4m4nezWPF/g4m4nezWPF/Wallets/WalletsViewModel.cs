@@ -15,18 +15,15 @@ namespace g4m4nez.GUI.WPF.Wallets
     {
 
         public static readonly WalletService _walletSevice = new();
-        private WalletDetailsViewModel _currentWallet;
-
+        private WalletDetailsViewModel _currentWalletDetailsDetails;
         public static ObservableCollection<WalletDetailsViewModel> Wallets { get; set; }
 
-        public ObservableCollection<ITab> Tabs { get; }
-
-        public WalletDetailsViewModel CurrentWallet
+        public WalletDetailsViewModel CurrentWalletDetails
         {
-            get => _currentWallet;
+            get => _currentWalletDetailsDetails;
             set
             {
-                _currentWallet = value;
+                _currentWalletDetailsDetails = value;
                 RaisePropertyChanged();
             }
         }
@@ -34,10 +31,6 @@ namespace g4m4nez.GUI.WPF.Wallets
         public WalletsViewModel(Action gotoSignIn, Action goToAddWallet)
         {
             Wallets = new ObservableCollection<WalletDetailsViewModel>();
-            Tabs    = new ObservableCollection<ITab>();
-            //Tabs.Add(new WalletDetailsViewModel(_currentWallet.FromWallet));
-            Tabs.Add(new WalletDetailsViewModel(new Wallet(Guid.NewGuid(), "name", "", 25m, Money.Currencies.EUR)));
-            Tabs.Add(new WalletDetailsViewModel(new Wallet(Guid.NewGuid(), "name", "", 25m, Money.Currencies.EUR)));
 
             AddWalletCommand = new DelegateCommand(goToAddWallet);
             SignInCommand = new DelegateCommand(gotoSignIn);
@@ -62,15 +55,15 @@ namespace g4m4nez.GUI.WPF.Wallets
 
         public async void EditWallet()
         {
-            await _walletSevice.AddOrUpdateWalletAsync(CurrentWallet.FromWallet);
+            await _walletSevice.AddOrUpdateWalletAsync(CurrentWalletDetails.FromWallet);
         }
 
         public void DeleteWallet()
         {
             try
             {
-                _walletSevice.DeleteWallet(CurrentWallet.FromWallet);
-                Wallets.Remove(CurrentWallet);
+                _walletSevice.DeleteWallet(CurrentWalletDetails.FromWallet);
+                Wallets.Remove(CurrentWalletDetails);
             }
             catch (Exception)
             {
@@ -83,7 +76,7 @@ namespace g4m4nez.GUI.WPF.Wallets
 
         public void ClearSensitiveData()
         {
-            CurrentWallet = null;
+            CurrentWalletDetails = null;
             UpdateWalletsCollection();
         }
     }

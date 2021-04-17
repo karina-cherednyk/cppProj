@@ -46,8 +46,8 @@
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
 			<!--Collections-->
-			<ListView Grid.Row="1" Grid.ColumnSpan="2"  ItemsSource="{Binding Wallets}" DisplayMemberPath="DisplayName"
-                 SelectedItem="{Binding CurrentWallet}">
+			<ListView Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Wallets}" DisplayMemberPath="DisplayName"
+                 SelectedItem="{Binding CurrentWalletDetails}">
 			</ListView>
 
 			<!--Wallet Add/Delete-->
@@ -82,22 +82,7 @@
 			<Button Grid.Row="0" Grid.Column="2" Command="{Binding GoToCategories}" Content="Categories"/>
 -->
 			<!--Details-->
-			<!--<ContentControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Content="{Binding CurrentWallet}"></ContentControl>-->
-			<TabControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" ItemsSource="{Binding Tabs}">
-				<TabControl.Resources>
-					<DataTemplate DataType="local:WalletDetailsView"></DataTemplate>
-					<DataTemplate DataType="local:WalletCategoriesView"></DataTemplate>
-				</TabControl.Resources>
-
-				<TabControl.ItemTemplate>
-					<DataTemplate DataType="{x:Type utils:ITab}">
-						<TextBlock>
-							<Run Text="{Binding TabName}"></Run>
-						</TextBlock>
-					</DataTemplate>
-				</TabControl.ItemTemplate>
-
-			</TabControl>
+			<ContentControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Content="{Binding CurrentWalletDetails}"></ContentControl>
 
 		</Grid>
 

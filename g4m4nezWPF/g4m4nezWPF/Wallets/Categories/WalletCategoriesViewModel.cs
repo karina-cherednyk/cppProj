@@ -10,7 +10,7 @@ namespace g4m4nez.GUI.WPF.Wallets
 {
     public class WalletCategoriesViewModel : BindableBase, ITab
     {
-        public string TabName { get; set; }
+        public string TabName { get; set; } = "Categories";
 
         private readonly WalletService _service;
         private readonly Wallet _wallet;
@@ -32,9 +32,9 @@ namespace g4m4nez.GUI.WPF.Wallets
         public static ObservableCollection<Category> WalletCategoriesAdded { get; set; }
         public static ObservableCollection<Category> WalletCategoriesAvailable { get; set; }
 
-        WalletCategoriesViewModel()
+        public WalletCategoriesViewModel(Wallet wallet)
         {
-            TabName = "Categories";
+            _wallet = wallet;
         }
 
         public async void AddWalletCategory()

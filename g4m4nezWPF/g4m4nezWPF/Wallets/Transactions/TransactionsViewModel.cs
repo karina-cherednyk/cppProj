@@ -5,11 +5,14 @@ using Prism.Commands;
 using Prism.Mvvm;
 using System;
 using System.Collections.ObjectModel;
+using g4m4nez.Utils;
 
 namespace g4m4nez.GUI.WPF.Wallets
 {
-    public class TransactionsViewModel : BindableBase
+    public class TransactionsViewModel : BindableBase, ITab
     {
+        public string TabName { get; set; } = "Transactions";
+
         private readonly WalletService _service = new();
 
         private readonly Wallet _wallet;
@@ -54,6 +57,7 @@ namespace g4m4nez.GUI.WPF.Wallets
         public TransactionsViewModel(Wallet wallet, Action goToAddTransaction)
         {
             _wallet = wallet;
+            Transactions = new ObservableCollection<TransactionDetailsViewModel>();
             AddTransactionCommand = new DelegateCommand(goToAddTransaction);
             DeleteTransactionCommand = new DelegateCommand(DeleteTransaction);
             UpdateWalletTransactions();

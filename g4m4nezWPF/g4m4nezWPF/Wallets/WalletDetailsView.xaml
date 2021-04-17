@@ -4,49 +4,33 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:g4m4nez.GUI.WPF.Wallets"
-             mc:Ignorable="d" 
+             xmlns:utils="clr-namespace:g4m4nez.Utils;assembly=Utils" d:DataContext="{d:DesignInstance Type=local:WalletDetailsViewModel}"
+			 mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
-        <StackPanel>
+	<Grid>
+		<TabControl ItemsSource="{Binding Tabs}">
+			<TabControl.Resources>
+				<DataTemplate DataType="{x:Type local:WalletInfoViewModel}">
+					<local:WalletInfoView></local:WalletInfoView>
+				</DataTemplate>
+				<DataTemplate DataType="{x:Type local:WalletCategoriesViewModel}">
+					<local:WalletCategoriesView></local:WalletCategoriesView>
+				</DataTemplate>
+				<DataTemplate DataType="{x:Type local:TransactionsViewModel}">
+					<local:TransactionsView></local:TransactionsView>
+				</DataTemplate>
+			</TabControl.Resources>
 
+			<TabControl.ItemTemplate>
+				<DataTemplate DataType="{x:Type utils:ITab}">
+					<TextBlock>
+						<Run Text="{Binding TabName}"></Run>
+					</TextBlock>
+				</DataTemplate>
+			</TabControl.ItemTemplate>
 
-            <Grid>
-       <Grid.RowDefinitions>
-           <RowDefinition Height="Auto"></RowDefinition>
-           <RowDefinition Height="Auto"></RowDefinition>
-           <RowDefinition Height="Auto"></RowDefinition>
-           <RowDefinition Height="Auto"></RowDefinition>
-           <RowDefinition Height="Auto"></RowDefinition>
-                </Grid.RowDefinitions>
-
-      
-       <StackPanel Grid.Row="0" >
-            <TextBlock Margin=" 10,10,10,5">Name</TextBlock>
-           <TextBox  MinWidth="300" Margin="10" HorizontalAlignment="Stretch"  Text="{Binding Name, UpdateSourceTrigger=LostFocus  }"></TextBox>
-       </StackPanel>
-
-       <StackPanel Grid.Row="1" >
-           <TextBlock Margin=" 10,10,10,5">Description</TextBlock>
-           <TextBox  MinWidth="300" Margin="10" HorizontalAlignment="Stretch"  Text="{Binding Description, UpdateSourceTrigger=LostFocus  }"></TextBox>
-       </StackPanel>
-
-        <StackPanel Grid.Row="2" >
-            <TextBlock Margin=" 10,10,10,5">Starting Balance</TextBlock>
-                    <TextBox Name="TbBalance"  MinWidth="300" Margin="10" HorizontalAlignment="Stretch" IsReadOnly="True" Text="{Binding Balance ,Mode=TwoWay,UpdateSourceTrigger=LostFocus }"></TextBox>
-       </StackPanel>
-
-       <StackPanel Grid.Row="3" >
-            <TextBlock Margin=" 10,10,10,5">Main currency</TextBlock>
-           <TextBox  MinWidth="300" Margin="10" HorizontalAlignment="Stretch" IsReadOnly="True" Text="{Binding MainCurrency, Mode=OneWay, UpdateSourceTrigger=LostFocus  }"></TextBox>
-       </StackPanel>
-	            
-	            <Button Grid.Row="4"  Margin=" 10,10,10,5" Width="200" Command="{Binding SubmitChangesCommand}">Submit changes</Button>
-
-
-    </Grid>
-
-            </StackPanel>
-        </ScrollViewer>
+		</TabControl>
+	</Grid>
   
 </UserControl>

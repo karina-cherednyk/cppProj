@@ -1,57 +1,36 @@
-﻿using g4m4nez.BusinessLayer;
+﻿using System;
+
+using System.Collections.ObjectModel;
+
+using g4m4nez.BusinessLayer;
 using g4m4nez.Models;
-using System.Threading.Tasks;
 using g4m4nez.Utils;
-using Prism.Commands;
 using Prism.Mvvm;
+
 namespace g4m4nez.GUI.WPF.Wallets
 {
-    public class WalletDetailsViewModel : BindableBase, ITab
+    public class WalletDetailsViewModel : BindableBase
     {
-        public string TabName { get; set; } = "Info";
-
         private readonly Wallet _wallet;
-        public Wallet FromWallet => _wallet;
-
-        public string Name
-        {
-            get => _wallet.Name;
-            set => _wallet.Name = value;
-            // TODO: FIX PSEUDO-ASYNC HACK (DELAYED EXECUTION) 
-            // RaisePropertyChanged(nameof(DisplayName));
-        }
-
-        public decimal Balance // TODO: recheck
-        {
-            get => _wallet.StartingBalance;
-            set => _wallet.StartingBalance = value;
-            // TbBalance.Text = value;
-            // RaisePropertyChanged(nameof(DisplayName));
-        }
-
-        public string Description
-        {
-            get => _wallet.Description;
-            set => _wallet.Description = value;
-            // RaisePropertyChanged(nameof(DisplayName));
-        }
-
-        public Money.Currencies? MainCurrency => _wallet.Currency;
+        public ObservableCollection<ITab> Tabs { get; }
 
         public string DisplayName => $"{_wallet.Name} ({_wallet.StartingBalance} {_wallet.Currency})";
+
+        public Wallet FromWallet => _wallet;
+
+        void doNothing()
+        { }
+
 
         public WalletDetailsViewModel(Wallet wallet)
         {
             _wallet = wallet;
-            SubmitChangesCommand = new DelegateCommand(SubmitChanges);
+            Tabs = new ObservableCollection<ITab>();
+            //Tabs.Add(new WalletDetailsViewModel(_currentWalletDetailsDetails.FromWallet));
+            Tabs.Add(new WalletInfoViewModel(new Wallet(Guid.NewGuid(), "name", "", 25m, Money.Currencies.EUR)));
+            Tabs.Add(new WalletCategoriesViewModel(new Wallet(Guid.NewGuid(), "name", "", 25m, Money.Currencies.EUR)));
+            Tabs.Add(new TransactionsViewModel(new Wallet(Guid.NewGuid(), "name", "", 25m, Money.Currencies.EUR), new Action(doNothing)));
         }
 
-        public DelegateCommand SubmitChangesCommand { get; }
-        public async void SubmitChanges()
-        {
-            await WalletsViewModel._walletSevice.AddOrUpdateWalletAsync(_wallet);
-            RaisePropertyChanged(nameof(DisplayName));
-            return;
-        }
     }
 }

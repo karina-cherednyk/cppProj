@@ -20,7 +20,7 @@
 		    <ColumnDefinition Width="2*"></ColumnDefinition>
 	    </Grid.ColumnDefinitions>
 
-	    <Button Grid.Row="0" Grid.Column="0"  Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="MediumSeaGreen" Foreground="White"
+	    <Button Grid.Row="0" Grid.Column="0"  Height="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="DarkSeaGreen" Foreground="White"
 	            Command="{Binding AddWalletCategoryCommand}" Content="Add category to wallet"/>
 
 	    <ComboBox Grid.Row="0" Grid.Column="2" Width="300" Name="WalletCategoriesAvailable" ItemsSource="{Binding WalletCategoriesAvailable}"
