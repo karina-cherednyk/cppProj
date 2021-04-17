@@ -42,6 +42,17 @@ namespace g4m4nez.Services
             return wallet;
         }
 
+        public async Task<Wallet> CreateWallet(Guid userID, Wallet wallet)
+        {
+            DBUser dbOwner = await _dbUsers.GetAsync(userID);
+            await AddOrUpdateWalletAsync(wallet);
+
+            dbOwner.Wallets.AddOwnedWallet(wallet.Guid);
+            await _dbUsers.AddOrUpdateAsync(dbOwner);
+
+            return wallet;
+        }
+
         public async void CreateTransaction(Guid userID, Guid walletID, Money amount, string description,
                                             Category category, DateTime date)
         {
