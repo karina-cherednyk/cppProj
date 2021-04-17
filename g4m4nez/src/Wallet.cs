@@ -9,7 +9,7 @@ namespace g4m4nez.BusinessLayer
     [Serializable]
     public class Wallet : IStorable
     {
-        private readonly FileDataStorage<DBUser> _dbUsers = new FileDataStorage<DBUser>();
+        private readonly FileDataStorage<DBUser> _dbUsers = new();
 
         private Guid _guid;
         private decimal _startingBalance;
@@ -110,6 +110,11 @@ namespace g4m4nez.BusinessLayer
         public bool IsOwner(User user)
         {
             return user.Guid == Users.Owner;
+        }
+
+        public bool IsOwner(Guid userGuid)
+        {
+            return userGuid == Users.Owner;
         }
 
         public Wallet(Guid ownerGuid, string name, string description, decimal startingBalance, Money.Currencies currency)

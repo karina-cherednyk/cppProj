@@ -35,6 +35,7 @@
 				<RowDefinition Height="Auto"></RowDefinition>
 				<RowDefinition Height="*"></RowDefinition>
 				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
 
 			</Grid.RowDefinitions>
 
@@ -42,16 +43,21 @@
 				<ColumnDefinition Width="*"/>
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
-			<!--Add-->
-			<Button Grid.Row="0" Grid.Column="0" Command="{Binding AddWalletCommand}" Content="Add" Background="DarkSeaGreen" Foreground="AliceBlue"/>
-			<!--Delete-->
-			<Button Grid.Row="0" Grid.Column="1" Command="{Binding DeleteWalletCommand}" Content="Delete" Background="PaleVioletRed" Foreground="AliceBlue"/>
 			<!--Collections-->
 			<ListView Grid.Row="1" Grid.ColumnSpan="2"  ItemsSource="{Binding Wallets}" DisplayMemberPath="DisplayName"
                  SelectedItem="{Binding CurrentWallet}">
 			</ListView>
+
+			<!--Wallet Add/Delete-->
+			<Button Grid.Row="0" Grid.Column="0" Command="{Binding AddWalletCommand}" Content="+ Wallet" Background="DarkSeaGreen" Foreground="AliceBlue"/>
+			<Button Grid.Row="0" Grid.Column="1" Command="{Binding DeleteWalletCommand}" Content="- Wallet" Background="PaleVioletRed" Foreground="AliceBlue"/>
+
+			<!--User Category Add/Delete-->
+			<Button Grid.Row="2" Grid.Column="0" Command="{Binding AddWalletCommand}" Content="+ User Category" Background="DarkSeaGreen" Foreground="AliceBlue"/>
+			<Button Grid.Row="2" Grid.Column="1" Command="{Binding DeleteWalletCommand}" Content="- User Category" Background="PaleVioletRed" Foreground="AliceBlue"/>
+
 			<!--Log out-->
-			<Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Command="{Binding SignInCommand}">Log out</Button>
+			<Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Command="{Binding SignInCommand}">Log out</Button>
 		</Grid>
 
 

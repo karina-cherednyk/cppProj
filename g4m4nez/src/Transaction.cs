@@ -7,7 +7,7 @@ namespace g4m4nez.BusinessLayer
     public struct Transaction
     {
         private Money _amount;
-        public User User { get; }
+        public Guid User { get; }
         public Money Amount
         {
             get => _amount;
@@ -44,7 +44,7 @@ namespace g4m4nez.BusinessLayer
             set => _date = value;
         }
 
-        public Transaction(User user, Money amount, string description, Category category, DateTime date)
+        public Transaction(Guid user, Money amount, string description, Category category, DateTime date)
         {
             User = user;
             _amount = amount;
@@ -54,7 +54,7 @@ namespace g4m4nez.BusinessLayer
             _attachments = new List<string>();
         }
 
-        public Transaction(User user, Money amount, string description, Category category, DateTime date, List<string> attachments)
+        public Transaction(Guid user, Money amount, string description, Category category, DateTime date, List<string> attachments)
         {
             User = user;
             _amount = amount;

@@ -3,20 +3,20 @@
     public struct Category
     {
         private string _icon;
+        private string _name;
+        private string _description;
+        private Colors _color;
+
         public string Icon
         {
             get => _icon;
             set => _icon = value;
         }
-
-        private string _name;
         public string Name
         {
             get => _name;
             set => _name = value;
         }
-
-        private string _description;
         public string Description
         {
             get => _description;
@@ -28,7 +28,6 @@
             BLUE, ORANGE, BLACK, CYAN, MAGENTA
         }
 
-        private Colors _color;
         public Colors Color
         {
             get => _color;

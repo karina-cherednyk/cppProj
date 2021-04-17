@@ -42,64 +42,37 @@ namespace g4m4nez.Services
             return wallet;
         }
 
-        public async void RenameWallet(Guid userID, Guid walletID, string name)
+        public async void CreateTransaction(Guid userID, Guid walletID, Money amount, string description,
+                                            Category category, DateTime date)
         {
-            User user = new(await _dbUsers.GetAsync(userID));
             Wallet wallet = await _wallets.GetAsync(walletID);
-            if (wallet.IsOwner(user))
-            {
-                wallet.Name = name;
-            }
-            else
-            {
-                throw new System.InvalidOperationException("Only owner can change wallet name");
-            }
-        }
-
-        public async void ChangeWalletDescription(Guid userID, Guid walletID, string description)
-        {
-            User user = new(await _dbUsers.GetAsync(userID));
-            Wallet wallet = await _wallets.GetAsync(walletID);
-            if (wallet.IsOwner(user))
-            {
-                wallet.Description = description;
-            }
-            else
-            {
-                throw new System.InvalidOperationException("Only owner can change wallet description");
-            }
-        }
-
-        public async void CreateTransaction(Guid userID, Guid walletID, Money amount,
-            string description, Category category, DateTime date)
-        {
-            User user = new(await _dbUsers.GetAsync(userID));
-            Wallet wallet = await _wallets.GetAsync(walletID);
-            Transaction transaction = new(user, amount, description, category, date);
+            Transaction transaction = new(userID, amount, description, category, date);
             wallet.AddTransaction(transaction);
+            await _wallets.AddOrUpdateAsync(wallet); // TODO: may be buggy
         }
 
-        public async void CreateTransaction(Guid userID, Guid walletID, Money amount,
-            string description, Category category, DateTime date, List<string> attachments)
+        public async void CreateTransaction(Guid userID, Guid walletID, Money amount, string description,
+                                            Category category, DateTime date, List<string> attachments)
         {
-            User user = new(await _dbUsers.GetAsync(userID));
             Wallet wallet = await _wallets.GetAsync(walletID);
-            Transaction transaction = new(user, amount, description, category, date, attachments);
+            Transaction transaction = new(userID, amount, description, category, date, attachments);
             wallet.AddTransaction(transaction);
+            await _wallets.AddOrUpdateAsync(wallet); // TODO: may be buggy
         }
 
         public async void CreateCategory(Guid userID, string name, string description, string icon, Category.Colors color)
         {
-            User user = new(await _dbUsers.GetAsync(userID));
+            DBUser user = await _dbUsers.GetAsync(userID);
             Category category = new(name, description, icon, color);
             user.Categories.AddCategory(category);
+            await _dbUsers.AddOrUpdateAsync(user); // TODO: may be buggy
         }
 
+        // Adds category to wallet
         public async void AddCategory(Guid userID, Guid walletID, Category category)
         {
-            User user = new(await _dbUsers.GetAsync(userID));
             Wallet wallet = await _wallets.GetAsync(walletID);
-            if (wallet.IsOwner(user))
+            if (wallet.IsOwner(userID)) // TODO: may be buggy
             {
                 wallet.Categories.ActivateCategory(category);
             }
@@ -111,9 +84,8 @@ namespace g4m4nez.Services
 
         public async void RemoveCategory(Guid userID, Guid walletID, Category category)
         {
-            User user = new(await _dbUsers.GetAsync(userID));
             Wallet wallet = await _wallets.GetAsync(walletID);
-            if (wallet.IsOwner(user))
+            if (wallet.IsOwner(userID)) // TODO: may be buggy
             {
                 wallet.Categories.DeactivateCategory(category);
             }
@@ -125,9 +97,8 @@ namespace g4m4nez.Services
 
         public async void RemoveTransaction(Guid userID, Guid walletID, Transaction transaction)
         {
-            User user = new(await _dbUsers.GetAsync(userID));
             Wallet wallet = await _wallets.GetAsync(walletID);
-            if (transaction.User == user || wallet.IsOwner(user))
+            if (transaction.User == userID || wallet.IsOwner(userID))
             {
                 wallet.Transactions.RemoveTransaction(transaction);
             }
