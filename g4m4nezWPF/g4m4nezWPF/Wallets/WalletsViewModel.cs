@@ -21,8 +21,6 @@ namespace g4m4nez.GUI.WPF.Wallets
 
         public ObservableCollection<ITab> Tabs { get; }
 
-        private WalletDetailsViewModel _currentWallet; // <--- TODO: could be transaction, category... use interface for them?
-
         public WalletDetailsViewModel CurrentWallet
         {
             get => _currentWallet;
