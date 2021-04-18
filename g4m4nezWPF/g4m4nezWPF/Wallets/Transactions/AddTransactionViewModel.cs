@@ -5,6 +5,8 @@ using g4m4nez.Services;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 
 namespace g4m4nez.GUI.WPF.Wallets
@@ -55,6 +57,15 @@ namespace g4m4nez.GUI.WPF.Wallets
             {
                 _transaction.TransactionCategory = value;
                 RaisePropertyChanged(nameof(TransactionCategory));
+            }
+        }
+        public List<Category> Categories
+        {
+            get
+            {
+                return
+                    _currentWallet.Categories.ActiveCategories.ToList()
+                    .Where(x => x.Value).Select( x => x.Key).ToList();
             }
         }
 

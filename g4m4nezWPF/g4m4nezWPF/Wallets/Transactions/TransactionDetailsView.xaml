@@ -39,7 +39,8 @@
 
                 <StackPanel Grid.Row="3" >
                     <TextBlock Margin=" 10,10,10,5">Category</TextBlock>
-                    <TextBox  MinWidth="300" Margin="10" HorizontalAlignment="Stretch" IsReadOnly="True" Text="{Binding TransactionCategory, Mode=TwoWay, UpdateSourceTrigger=LostFocus  }"></TextBox>
+                    <TextBox  MinWidth="300" Margin="10" HorizontalAlignment="Stretch" IsReadOnly="True" 
+                              Text="{Binding TransactionCategory.Name, Mode=TwoWay, UpdateSourceTrigger=LostFocus  }"></TextBox>
                 </StackPanel>
 
                 <StackPanel Grid.Row="4" >

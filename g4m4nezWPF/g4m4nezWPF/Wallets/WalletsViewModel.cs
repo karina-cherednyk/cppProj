@@ -37,7 +37,7 @@ namespace g4m4nez.GUI.WPF.Wallets
             }
         }
 
-        public WalletsViewModel(Action gotoSignIn, Action goToAddWallet)
+        public WalletsViewModel(Action gotoSignIn, Action goToAddWallet, Action goToCategories)
         {
             Wallets = new ObservableCollection<WalletDetailsViewModel>();
 
@@ -46,6 +46,8 @@ namespace g4m4nez.GUI.WPF.Wallets
 
             DeleteWalletCommand = new DelegateCommand(DeleteWallet);
             CloseCommand = new DelegateCommand(() => Environment.Exit(0));
+
+            ManageUserCategoriesCommand = new DelegateCommand(() => goToCategories() );
         }
 
         public static void UpdateWalletsCollection()
@@ -61,6 +63,8 @@ namespace g4m4nez.GUI.WPF.Wallets
         public DelegateCommand SignInCommand { get; }
         public DelegateCommand DeleteWalletCommand { get; }
         public DelegateCommand CloseCommand { get; }
+
+        public DelegateCommand ManageUserCategoriesCommand { get; }
 
         public void DeleteWallet()
         {

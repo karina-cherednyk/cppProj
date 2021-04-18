@@ -1,4 +1,6 @@
-﻿namespace g4m4nez.Models
+﻿using System.Text.Json.Serialization;
+
+namespace g4m4nez.Models
 {
     public struct Category
     {
@@ -34,6 +36,7 @@
             set => _color = value;
         }
 
+        [JsonConstructor]
         public Category(string name, string description, string icon, Colors color)
         {
             _name = name;

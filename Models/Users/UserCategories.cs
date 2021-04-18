@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
+
 namespace g4m4nez.Models
 {
     [Serializable]
@@ -11,6 +13,12 @@ namespace g4m4nez.Models
         public UserCategories()
         {
             categories = new HashSet<Category>();
+        }
+
+        [JsonConstructor]
+        public UserCategories(HashSet<Category> categories)
+        {
+            this.categories = categories;
         }
 
         public void AddCategory(Category category)

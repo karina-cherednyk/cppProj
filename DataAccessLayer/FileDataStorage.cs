@@ -24,7 +24,7 @@ namespace g4m4nez.DataAccessLayer
         {
             JsonSerializerOptions options = new()
             {
-                ReferenceHandler = ReferenceHandler.Preserve,
+                //ReferenceHandler = ReferenceHandler.Preserve,
                 WriteIndented = true
             };
 

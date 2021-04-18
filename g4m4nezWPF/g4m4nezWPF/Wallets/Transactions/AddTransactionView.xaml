@@ -43,7 +43,13 @@
                 </StackPanel>
                 <StackPanel Grid.Row="3" Grid.Column="0">
                     <TextBlock Margin=" 10,10,10,5">Category:</TextBlock>
-                    <TextBox  MinWidth="300" Margin="10" HorizontalAlignment="Stretch"  Text="{Binding TransactionCategory}"></TextBox>
+                    <ListBox 
+                        Name="CategoriesListBox"
+                        ItemsSource="{Binding Categories}"
+                        HorizontalContentAlignment="Stretch"
+                        DisplayMemberPath="Name"
+                        SelectedItem="{ Binding TransactionCategory}" >
+                    </ListBox>
                 </StackPanel>
                 <StackPanel Grid.Row="4" Grid.Column="0">
                     <TextBlock Margin=" 10,10,10,5">Date:</TextBlock>

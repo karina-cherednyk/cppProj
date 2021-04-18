@@ -60,12 +60,12 @@ namespace g4m4nez.BusinessLayer
         }
 
         [JsonConstructor]
-        public Transaction(Guid user, Money amount, string description, Category category, DateTime date, List<string> attachments)
+        public Transaction(Guid user, Money amount, string description, Category transactionCategory, DateTime date, List<string> attachments)
         {
             User = user;
             _amount = amount;
             _description = description;
-            _category = category;
+            _category = transactionCategory;
             _date = date;
             _attachments = attachments;
         }

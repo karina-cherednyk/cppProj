@@ -12,6 +12,7 @@
         Wallets,
         AddWallet,
         Transactions,
-        AddTransaction
+        AddTransaction,
+        ManageCategories
     }
 }

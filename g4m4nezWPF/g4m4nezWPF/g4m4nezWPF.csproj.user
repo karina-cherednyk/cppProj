@@ -7,6 +7,12 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="UserCategories\CategoryDetailsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserCategories\ManageCategoriesView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Wallets\Categories\WalletCategoriesView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -28,6 +34,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserCategories\CategoryDetailsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserCategories\ManageCategoriesView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Wallets\Categories\WalletCategoriesView.xaml">

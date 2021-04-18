@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="g4m4nez.GUI.WPF.Wallets.ManageCategoriesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:g4m4nez.GUI.WPF.Wallets"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type local:CategoryDetailsViewModel}">
+            <local:CategoryDetailsView></local:CategoryDetailsView>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" MinWidth="200"></ColumnDefinition>
+            <ColumnDefinition Width="3"></ColumnDefinition>
+            <ColumnDefinition Width="7*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+
+        <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" ></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!--Collections-->
+            <ListView Grid.Row="1" Grid.ColumnSpan="2" 
+                      ItemsSource="{Binding Categories}" 
+                      DisplayMemberPath="DisplayName"
+                      SelectedItem="{Binding CurrentCategoryDetails}">
+            </ListView>
+
+            <!--Category Add/Delete-->
+            <Button Grid.Row="0" Grid.Column="0" MinHeight="26" Command="{Binding AddCategoryCommand}" Content="+ Category" Background="DarkSeaGreen" Foreground="AliceBlue"/>
+            <Button Grid.Row="0" Grid.Column="1" MinHeight="26" Command="{Binding DeleteCategoryCommand}" Content="- Category" Background="PaleVioletRed" Foreground="AliceBlue"/>
+
+
+
+            <!--Log out-->
+            <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Command="{Binding GoToWalletsCommand}">Return to wallets</Button>
+        </Grid>
+        <!--Details-->
+        <ContentControl Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" Content="{Binding CurrentCategoryDetails}"></ContentControl>
+
+        <GridSplitter Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" HorizontalAlignment="Stretch"></GridSplitter>
+
+    </Grid>
+</UserControl>

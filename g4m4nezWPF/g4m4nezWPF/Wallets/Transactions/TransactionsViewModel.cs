@@ -74,7 +74,7 @@ namespace g4m4nez.GUI.WPF.Wallets
 
         public void DeleteTransaction()
         {
-            if (_currentTransaction is not null)
+            if (_currentTransaction is not null && CurrentTransaction.GetType() == typeof(TransactionDetailsViewModel) )
                 _service.RemoveTransaction(CurrentSession.User.Guid, _wallet.Guid, ((TransactionDetailsViewModel)CurrentTransaction).FromTransaction);
         }
 

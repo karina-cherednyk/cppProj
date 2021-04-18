@@ -21,6 +21,9 @@
         <DataTemplate DataType="{x:Type wallets:AddWalletViewModel}">
             <wallets:AddWalletView></wallets:AddWalletView>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type wallets:ManageCategoriesViewModel}">
+            <wallets:ManageCategoriesView></wallets:ManageCategoriesView>
+        </DataTemplate>
     </UserControl.Resources>
     <ContentControl Content="{Binding CurrentViewModel}"></ContentControl>
 
