@@ -94,7 +94,11 @@ namespace g4m4nez.BusinessLayer
 
         public List<Transaction> GetFromIndex(int index, int n = 10)
         {
-            int num = Transactions.Count - 1;
+            int num = Transactions.Count - 1; // last index
+            if (num < 0)
+            {
+                return new List<Transaction>();
+            }
             if (index > num)
             {
                 throw new System.IndexOutOfRangeException("There are not enough elements");

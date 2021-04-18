@@ -60,16 +60,13 @@ namespace g4m4nez.GUI.WPF.Wallets
 
         public void DeleteWallet()
         {
-            try
-            {
-                _walletSevice.DeleteWallet(CurrentWalletDetails.FromWallet);
-                Wallets.Remove(CurrentWalletDetails);
-            }
-            catch (Exception)
+            if (_currentWalletDetailsDetails == null)
             {
                 MessageBox.Show("Please, select the wallet by clicking on it in the list.");
                 return;
             }
+            _walletSevice.DeleteWallet(CurrentWalletDetails.FromWallet);
+            Wallets.Remove(CurrentWalletDetails);
         }
 
         public MainNavigatableTypes Type => MainNavigatableTypes.Wallets;
