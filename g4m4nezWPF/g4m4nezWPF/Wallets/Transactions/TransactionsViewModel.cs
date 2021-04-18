@@ -32,6 +32,8 @@ namespace g4m4nez.GUI.WPF.Wallets
 
         public DelegateCommand AddTransactionCommand { get; set; }
         public DelegateCommand DeleteTransactionCommand { get; }
+        public DelegateCommand ShowFromNCommand { get; }
+
 
         public ITransactionDetails CurrentTransaction
         {
@@ -78,13 +80,28 @@ namespace g4m4nez.GUI.WPF.Wallets
                 _service.RemoveTransaction(CurrentSession.User.Guid, _wallet.Guid, ((TransactionDetailsViewModel)CurrentTransaction).FromTransaction);
         }
 
+        public void ShowFromN()
+        {
+            Transactions.Clear();
+            foreach (var transaction in _wallet.GetFromIndex(FromN))
+            {
+                Transactions.Add(new(transaction, _wallet));
+            }
+        }
+
         public TransactionsViewModel(Wallet wallet)
         {
             _wallet = wallet;
             Transactions = new ObservableCollection<TransactionDetailsViewModel>();
             AddTransactionCommand = new DelegateCommand(() => { CurrentTransaction = new AddTransactionViewModel(this, _wallet);});
             DeleteTransactionCommand = new DelegateCommand(DeleteTransaction);
+            ShowFromNCommand = new DelegateCommand(ShowFromN);
             UpdateWalletTransactions();
+
+            foreach (var transaction in wallet.GetFromIndex(0)) {
+                Transactions.Add(new(transaction, wallet));
+            }
+
             //TODO: CLEAR SENSITIVE DATA? UpdateWalletTransactions!!!!! 
         }
     }

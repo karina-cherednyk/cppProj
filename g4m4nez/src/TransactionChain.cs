@@ -115,9 +115,9 @@ namespace g4m4nez.BusinessLayer
             }
             if (index > num)
             {
-                throw new System.IndexOutOfRangeException("There are not enough elements");
+                return new();
             }
-            return Transactions.GetRange(index, Math.Min(index + n, num));
+            return Transactions.GetRange(index, Math.Min(index + n, Transactions.Count));
         }
     }
 }
