@@ -33,9 +33,9 @@ namespace g4m4nez.GUI.WPF.Wallets
             Tabs = new ObservableCollection<ITab>
             {
                 //Tabs.Add(new WalletDetailsViewModel(_currentWalletDetailsDetails.FromWallet));
-                new WalletInfoViewModel(new Wallet(Guid.NewGuid(), "name", "", 25m, Money.Currencies.EUR)),
-                new WalletCategoriesViewModel(new Wallet(Guid.NewGuid(), "name", "", 25m, Money.Currencies.EUR)),
-                new TransactionsViewModel(new Wallet(Guid.NewGuid(), "name", "", 25m, Money.Currencies.EUR), new Action(doNothing))
+                new WalletInfoViewModel(_wallet),
+                new WalletCategoriesViewModel(_wallet),
+                new TransactionsViewModel(_wallet, new Action(doNothing))
             };
         }
 
