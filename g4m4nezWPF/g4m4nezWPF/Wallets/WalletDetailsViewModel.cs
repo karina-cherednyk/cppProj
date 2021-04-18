@@ -3,13 +3,14 @@
 using System.Collections.ObjectModel;
 
 using g4m4nez.BusinessLayer;
+using g4m4nez.GUI.WPF.Navigation;
 using g4m4nez.Models;
 using g4m4nez.Utils;
 using Prism.Mvvm;
 
 namespace g4m4nez.GUI.WPF.Wallets
 {
-    public class WalletDetailsViewModel : BindableBase
+    public class WalletDetailsViewModel : NavigationBase<MainNavigatableTypes>
     {
         private readonly Wallet _wallet;
         public ObservableCollection<ITab> Tabs { get; }
@@ -21,6 +22,10 @@ namespace g4m4nez.GUI.WPF.Wallets
         void doNothing()
         { }
 
+        protected override INavigatable<MainNavigatableTypes> CreateViewModel(MainNavigatableTypes type)
+        {
+            throw new NotImplementedException();
+        }
 
         public WalletDetailsViewModel(Wallet wallet)
         {
