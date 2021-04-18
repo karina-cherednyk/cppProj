@@ -31,6 +31,7 @@
 		<Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="3">
 			<Grid.RowDefinitions>
 				<RowDefinition Height="Auto"></RowDefinition>
+				<RowDefinition Height="Auto"></RowDefinition>
 				<RowDefinition Height="*"></RowDefinition>
 				<RowDefinition Height="Auto"></RowDefinition>
 				<RowDefinition Height="Auto"></RowDefinition>
@@ -40,15 +41,19 @@
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*"/>
 				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
 			<!--Collections-->
-			<ListView Grid.Row="1" Grid.ColumnSpan="2"  ItemsSource="{Binding Transactions}" DisplayMemberPath="DisplayName"
+			<ListView Grid.Row="2" Grid.ColumnSpan="4"  ItemsSource="{Binding Transactions}" DisplayMemberPath="DisplayName"
                  SelectedItem="{Binding CurrentTransaction}">
 			</ListView>
 
 			<!--Transaction Add/Delete-->
-            <Button Grid.Row="0" Grid.Column="0" Command="{Binding AddTransactionCommand}" Content="+ Transaction" Background="DarkSeaGreen" Foreground="AliceBlue"/>
-			<Button Grid.Row="0" Grid.Column="1" Command="{Binding DeleteTransactionCommand}" Content="- Transaction" Background="PaleVioletRed" Foreground="AliceBlue"/>
+            <Button Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Command="{Binding AddTransactionCommand}" Content="+ Transaction" Background="DarkSeaGreen" Foreground="AliceBlue"/>
+			<Button Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Command="{Binding DeleteTransactionCommand}" Content="- Transaction" Background="PaleVioletRed" Foreground="AliceBlue"/>
+			<TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding FromN}" Background="WhiteSmoke" Foreground="Black"/>
+			<Button Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="1" Command="{Binding DeleteTransactionCommand}" Content="Show" Background="DarkSeaGreen" Foreground="AliceBlue"/>
 
 		</Grid>
 
