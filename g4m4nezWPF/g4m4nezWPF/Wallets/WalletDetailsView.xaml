@@ -9,7 +9,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
 	<Grid>
-		<TabControl ItemsSource="{Binding Tabs}" SelectedIndex="1">
+		<TabControl ItemsSource="{Binding Tabs}" SelectedIndex="{Binding DefaultTabIdx, Mode=OneWay}">
 			<TabControl.Resources>
 				<DataTemplate DataType="{x:Type local:WalletInfoViewModel}">
 					<local:WalletInfoView></local:WalletInfoView>

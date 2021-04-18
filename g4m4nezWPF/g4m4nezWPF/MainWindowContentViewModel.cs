@@ -15,7 +15,7 @@ namespace g4m4nez.GUI.WPF
         {
             if (type == MainNavigatableTypes.Auth)
             {
-                return new AuthViewModel(() => Navigate(MainNavigatableTypes.Wallets));
+                return new AuthViewModel(() =>  Navigate(MainNavigatableTypes.Wallets));
             }
             else
             {

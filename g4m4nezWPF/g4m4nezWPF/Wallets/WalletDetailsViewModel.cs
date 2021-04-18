@@ -19,6 +19,8 @@ namespace g4m4nez.GUI.WPF.Wallets
 
         public Wallet FromWallet => _wallet;
 
+        public int DefaultTabIdx { get; } = 0;
+
         void doNothing()
         { }
 
