@@ -92,14 +92,14 @@ namespace g4m4nez.BusinessLayer
             return result;
         }
 
-        public List<Transaction> GetFromIndex(int index)
+        public List<Transaction> GetFromIndex(int index, int n = 10)
         {
             int num = Transactions.Count - 1;
             if (index > num)
             {
                 throw new System.IndexOutOfRangeException("There are not enough elements");
             }
-            return Transactions.GetRange(index, num);
+            return Transactions.GetRange(index, Math.Min(index + n, num));
         }
     }
 }

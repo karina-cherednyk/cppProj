@@ -92,9 +92,9 @@ namespace g4m4nez.BusinessLayer
             return Transactions.GetLastNTransactions(n);
         }
 
-        public List<Transaction> GetFromIndex(int index)
+        public List<Transaction> GetFromIndex(int index, int n = 10)
         {
-            return Transactions.GetFromIndex(index);
+            return Transactions.GetFromIndex(index, n);
         }
 
         public void AddTransaction(Transaction transaction)

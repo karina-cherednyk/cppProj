@@ -17,6 +17,17 @@ namespace g4m4nez.GUI.WPF.Wallets
 
         private readonly Wallet _wallet;
 
+        private int _fromN;
+        public int FromN
+        {
+            get => _fromN;
+            set
+            {
+                _fromN = value;
+                RaisePropertyChanged();
+            }
+        }
+
         private TransactionDetailsViewModel _currentTransaction;
 
         public DelegateCommand AddTransactionCommand { get; }
@@ -43,7 +54,7 @@ namespace g4m4nez.GUI.WPF.Wallets
         public void UpdateWalletTransactions()
         {
             Transactions.Clear();
-            foreach (Transaction tran in _wallet.GetLastNTransactions(10))
+            foreach (Transaction tran in _wallet.GetFromIndex(FromN, 10))
             {
                 Transactions.Add(new TransactionDetailsViewModel(tran, _wallet));
             }
