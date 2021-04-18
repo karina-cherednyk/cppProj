@@ -88,6 +88,7 @@ namespace g4m4nez.Services
             if (wallet.IsOwner(userID)) // TODO: may be buggy
             {
                 wallet.Categories.ActivateCategory(category);
+                await _wallets.AddOrUpdateAsync(wallet);
             }
             else
             {

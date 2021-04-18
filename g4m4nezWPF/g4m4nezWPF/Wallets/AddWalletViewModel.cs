@@ -61,7 +61,7 @@ namespace g4m4nez.GUI.WPF.Wallets
 
         public AddWalletViewModel(Action gotoWallets)
         {
-            _wallet = new Wallet(Guid.NewGuid(), "", "", 0.0m, Money.Currencies.USD);
+            _wallet = new Wallet(CurrentSession.User.Guid, "", "", 0.0m, Money.Currencies.USD);
 
             _walletService = new WalletService();
             WalletViewCommand = new DelegateCommand(gotoWallets);

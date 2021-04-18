@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text.Json;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 using System.Threading.Tasks;
 
 namespace g4m4nez.DataAccessLayer
@@ -22,13 +21,13 @@ namespace g4m4nez.DataAccessLayer
 
         public async Task AddOrUpdateAsync(TObject obj)
         {
-            JsonSerializerOptions options = new()
-            {
-                //ReferenceHandler = ReferenceHandler.Preserve,
-                WriteIndented = true
-            };
+            //JsonSerializerOptions options = new()
+            //{
+            //    //ReferenceHandler = ReferenceHandler.Preserve,
+            //    WriteIndented = true
+            //};
 
-            string stringObject = JsonSerializer.Serialize(obj, options);
+            string stringObject = JsonConvert.SerializeObject(obj);
 
             string filePath = Path.Combine(BaseFolder, obj.Guid.ToString(format: "N"));
 
@@ -59,7 +58,7 @@ namespace g4m4nez.DataAccessLayer
                 stringObject = await sr.ReadToEndAsync();
             }
 
-            return JsonSerializer.Deserialize<TObject>(stringObject);
+            return JsonConvert.DeserializeObject<TObject>(stringObject);
         }
 
         public async Task<List<TObject>> GetAllAsync()
@@ -76,7 +75,7 @@ namespace g4m4nez.DataAccessLayer
                     stringObject = await sr.ReadToEndAsync();
                 }
 
-                res.Add(JsonSerializer.Deserialize<TObject>(stringObject));
+                res.Add(JsonConvert.DeserializeObject<TObject>(stringObject));
             }
 
             return res;

@@ -2,7 +2,8 @@
 using g4m4nez.Models;
 using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace g4m4nez.BusinessLayer
 {
@@ -125,8 +126,8 @@ namespace g4m4nez.BusinessLayer
             _transactions = new TransactionChain(_currency);
 
             // TODO: impl guid/repo for categories
-            //DBUser owner        = Task.Run<DBUser>(async () => await _dbUsers.GetAsync(ownerGuid)).Result;
-            //this._categories    = new WalletCategories(owner.Categories.Categories);
+            DBUser owner        = Task.Run<DBUser>(async () => await _dbUsers.GetAsync(ownerGuid)).Result;
+            _categories    = new WalletCategories(owner.Categories.Categories);
 
             Name = name;
             Description = description;

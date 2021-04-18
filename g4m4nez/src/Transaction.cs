@@ -1,7 +1,7 @@
 ﻿using g4m4nez.Models;
 using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace g4m4nez.BusinessLayer
 {
