@@ -25,11 +25,13 @@ namespace g4m4nez.GUI.WPF.Wallets
         public WalletDetailsViewModel(Wallet wallet)
         {
             _wallet = wallet;
-            Tabs = new ObservableCollection<ITab>();
-            //Tabs.Add(new WalletDetailsViewModel(_currentWalletDetailsDetails.FromWallet));
-            Tabs.Add(new WalletInfoViewModel(new Wallet(Guid.NewGuid(), "name", "", 25m, Money.Currencies.EUR)));
-            Tabs.Add(new WalletCategoriesViewModel(new Wallet(Guid.NewGuid(), "name", "", 25m, Money.Currencies.EUR)));
-            Tabs.Add(new TransactionsViewModel(new Wallet(Guid.NewGuid(), "name", "", 25m, Money.Currencies.EUR), new Action(doNothing)));
+            Tabs = new ObservableCollection<ITab>
+            {
+                //Tabs.Add(new WalletDetailsViewModel(_currentWalletDetailsDetails.FromWallet));
+                new WalletInfoViewModel(new Wallet(Guid.NewGuid(), "name", "", 25m, Money.Currencies.EUR)),
+                new WalletCategoriesViewModel(new Wallet(Guid.NewGuid(), "name", "", 25m, Money.Currencies.EUR)),
+                new TransactionsViewModel(new Wallet(Guid.NewGuid(), "name", "", 25m, Money.Currencies.EUR), new Action(doNothing))
+            };
         }
 
     }
