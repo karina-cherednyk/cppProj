@@ -65,7 +65,7 @@ namespace g4m4nez.BusinessLayer
         {
             Users.AddUser(userGuid);
             User user = new(await _dbUsers.GetAsync(userGuid));
-            Categories.AddUserCategories(new(await _dbUsers.GetAsync(userGuid)));
+            //Categories.AddUserCategories(new(await _dbUsers.GetAsync(userGuid)));
         }
 
         public void RemoveUser(Guid userGuid)
@@ -125,9 +125,7 @@ namespace g4m4nez.BusinessLayer
             _users = new UserRegistry(ownerGuid);
             _transactions = new TransactionChain(_currency);
 
-            // TODO: impl guid/repo for categories
-            DBUser owner        = Task.Run<DBUser>(async () => await _dbUsers.GetAsync(ownerGuid)).Result;
-            _categories    = new WalletCategories(owner.Categories.Categories);
+            _categories    = new WalletCategories();
 
             Name = name;
             Description = description;

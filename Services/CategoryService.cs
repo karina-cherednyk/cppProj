@@ -17,6 +17,7 @@ namespace Services
         {
             DBUser dbOwner = await _dbUsers.GetAsync(userID);
             dbOwner.Categories.AddCategory(cat);
+
             await _dbUsers.AddOrUpdateAsync(dbOwner);
             CurrentSession.User.Categories.AddCategory(cat);
         }

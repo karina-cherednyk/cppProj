@@ -1,8 +1,8 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace g4m4nez.Models
 {
-    public struct Category
+    public class Category
     {
         private string _icon;
         private string _name;
@@ -51,6 +51,24 @@ namespace g4m4nez.Models
             _description = "";
             _icon = icon;
             _color = color;
+        }
+        public override bool Equals(object obj)
+        {
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
+            else
+            {
+                Category that = (Category)obj;
+                return 
+                    that.Name != null && that.Name.Equals(this.Name) && 
+                    that.Description != null && that.Description.Equals(this.Description);
+            }
+        }
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode() + Description.GetHashCode();
         }
     }
 }

@@ -28,7 +28,9 @@
 
 
 		<!--Existing categories-->
-		<ListView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding WalletCategoriesAdded}" DisplayMemberPath="DisplayName" SelectedItem="{Binding CurrentCategory}"></ListView>
+		<ListView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
+                  ItemsSource="{Binding WalletCategoriesAdded}" 
+                  DisplayMemberPath="Name" SelectedItem="{Binding CurrentCategory}"></ListView>
 
 	</Grid>
 

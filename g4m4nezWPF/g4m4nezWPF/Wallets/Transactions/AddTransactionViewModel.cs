@@ -64,8 +64,7 @@ namespace g4m4nez.GUI.WPF.Wallets
             get
             {
                 return
-                    _currentWallet.Categories.ActiveCategories.ToList()
-                    .Where(x => x.Value).Select( x => x.Key).ToList();
+                    _currentWallet.Categories.ActiveCategories.ToList();
             }
         }
 

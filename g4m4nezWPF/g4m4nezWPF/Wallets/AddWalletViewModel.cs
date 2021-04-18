@@ -61,7 +61,7 @@ namespace g4m4nez.GUI.WPF.Wallets
 
         public AddWalletViewModel(Action gotoWallets)
         {
-            _wallet = new Wallet(CurrentSession.User.Guid, "", "", 0.0m, Money.Currencies.USD);
+            _wallet = new Wallet(CurrentSession.User.Guid, "New wallet", "", 0.0m, Money.Currencies.USD);
 
             _walletService = new WalletService();
             WalletViewCommand = new DelegateCommand(gotoWallets);
@@ -73,8 +73,8 @@ namespace g4m4nez.GUI.WPF.Wallets
         public async void AddWallet()
         {
             // TODO: DELETE GARBAGE CODE FROM HERE
-            Wallet addWallet = await _walletService.CreateWallet(CurrentSession.User.Guid, _wallet.Name, _wallet.Description, _wallet.StartingBalance, _wallet.Currency);
-            //Wallet addWallet = await _walletService.CreateWallet(CurrentSession.User.Guid, _wallet.clone); // TODO: Pass copy not ref
+            Wallet addWallet = await _walletService.CreateWallet(CurrentSession.User.Guid, _wallet);
+            
             WalletsViewModel.Wallets.Add(new WalletDetailsViewModel(addWallet));
             MessageBox.Show($"You've successfully added wallet: {addWallet.Name}!");
         }

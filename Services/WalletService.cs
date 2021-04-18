@@ -29,18 +29,18 @@ namespace g4m4nez.Services
             return wallets.Result;
         }
 
-        public async Task<Wallet> CreateWallet(Guid userID, string name, string description, decimal startingBalance, Money.Currencies currency)
-        {
-            DBUser dbOwner = await _dbUsers.GetAsync(userID);
+        //public async Task<Wallet> CreateWallet(Guid userID, string name, string description, decimal startingBalance, Money.Currencies currency)
+        //{
+        //    DBUser dbOwner = await _dbUsers.GetAsync(userID);
 
-            Wallet wallet = new(dbOwner.Guid, name, description, startingBalance, currency);
-            await AddOrUpdateWalletAsync(wallet);
+        //    Wallet wallet = new(dbOwner.Guid, name, description, startingBalance, currency);
+        //    await AddOrUpdateWalletAsync(wallet);
 
-            dbOwner.Wallets.AddOwnedWallet(wallet.Guid);
-            await _dbUsers.AddOrUpdateAsync(dbOwner);
+        //    dbOwner.Wallets.AddOwnedWallet(wallet.Guid);
+        //    await _dbUsers.AddOrUpdateAsync(dbOwner);
 
-            return wallet;
-        }
+        //    return wallet;
+        //}
 
         public async Task<Wallet> CreateWallet(Guid userID, Wallet wallet)
         {

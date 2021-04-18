@@ -47,17 +47,22 @@ namespace g4m4nez.GUI.WPF.Wallets
         {
             _wallet = wallet;
             var userCategories = CurrentSession.User.Categories.Categories;
-            var walCategories = wallet.Categories.ActiveCategories.Where(x => x.Value).Select(x => x.Key).ToHashSet();
+            var walCategories = wallet.Categories.ActiveCategories;
             WalletCategoriesAvailable = new(userCategories.Except(walCategories));
 
             AddWalletCategoryCommand = new DelegateCommand(() => AddWalletCategory());
+            WalletCategoriesAdded = new();
+            foreach (Category cat in  wallet.Categories.ActiveCategories)
+                WalletCategoriesAdded.Add(cat);
         }
 
         public async void AddWalletCategory()
         {
+            if (_selectedCategory == null) return;
             await Task.Run(() => _service.AddCategory(CurrentSession.User.Guid, _wallet.Guid, _selectedCategory));
             WalletCategoriesAvailable.Remove(_selectedCategory);
-           
+            WalletCategoriesAdded.Add(_selectedCategory);
+            _selectedCategory = null;
         }
 
         public async void RemoveWalletCategory()
