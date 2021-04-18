@@ -21,8 +21,6 @@ namespace g4m4nez.GUI.WPF.Wallets
 
         public int DefaultTabIdx { get; } = 0;
 
-        void doNothing()
-        { }
 
         protected override INavigatable<MainNavigatableTypes> CreateViewModel(MainNavigatableTypes type)
         {
@@ -37,7 +35,7 @@ namespace g4m4nez.GUI.WPF.Wallets
                 //Tabs.Add(new WalletDetailsViewModel(_currentWalletDetailsDetails.FromWallet));
                 new WalletInfoViewModel(_wallet),
                 new WalletCategoriesViewModel(_wallet),
-                new TransactionsViewModel(_wallet, new Action(doNothing))
+                new TransactionsViewModel(_wallet)
             };
         }
 

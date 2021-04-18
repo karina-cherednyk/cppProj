@@ -3,15 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:g4m4nez.GUI.WPF.Wallets"
-             mc:Ignorable="d" 
+             xmlns:local="clr-namespace:g4m4nez.GUI.WPF.Wallets" d:DataContext="{d:DesignInstance Type=local:TransactionsViewModel}"
+			 mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
 	<UserControl.Resources>
         <DataTemplate DataType="{x:Type local:TransactionDetailsViewModel}">
             <local:TransactionDetailsView></local:TransactionDetailsView>
         </DataTemplate>
-    </UserControl.Resources>
+		<DataTemplate DataType="{x:Type local:AddTransactionViewModel}">
+			<local:AddTransactionView></local:AddTransactionView>
+		</DataTemplate>
+	</UserControl.Resources>
 
 
     <Grid>
@@ -50,7 +53,7 @@
 			</ListView>
 
 			<!--Transaction Add/Delete-->
-            <Button Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Command="{Binding AddTransactionCommand}" Content="+ Transaction" Background="DarkSeaGreen" Foreground="AliceBlue"/>
+            <Button Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Command="{Binding AddTransactionCommand}" Content="+ Transaction" Background="DarkSeaGreen" Foreground="AliceBlue" Height="20" Grid.RowSpan="2" VerticalAlignment="Top"/>
 			<Button Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Command="{Binding DeleteTransactionCommand}" Content="- Transaction" Background="PaleVioletRed" Foreground="AliceBlue"/>
 			<TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding FromN}" Background="WhiteSmoke" Foreground="Black"/>
 			<Button Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="1" Command="{Binding DeleteTransactionCommand}" Content="Show" Background="DarkSeaGreen" Foreground="AliceBlue"/>

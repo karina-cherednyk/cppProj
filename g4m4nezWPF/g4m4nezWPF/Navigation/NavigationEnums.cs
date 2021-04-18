@@ -11,6 +11,7 @@
         Auth,
         Wallets,
         AddWallet,
+        Transactions,
         AddTransaction
     }
 }

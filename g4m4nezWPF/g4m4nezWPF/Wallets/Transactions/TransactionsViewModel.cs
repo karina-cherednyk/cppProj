@@ -28,12 +28,12 @@ namespace g4m4nez.GUI.WPF.Wallets
             }
         }
 
-        private TransactionDetailsViewModel _currentTransaction;
+        private static ITransactionDetails _currentTransaction;
 
-        public DelegateCommand AddTransactionCommand { get; }
+        public DelegateCommand AddTransactionCommand { get; set; }
         public DelegateCommand DeleteTransactionCommand { get; }
 
-        public TransactionDetailsViewModel CurrentTransaction
+        public ITransactionDetails CurrentTransaction
         {
             get =>  _currentTransaction;
             set
@@ -48,8 +48,20 @@ namespace g4m4nez.GUI.WPF.Wallets
             await _service.AddOrUpdateWalletAsync(_wallet);
         }
 
+        private ObservableCollection<TransactionDetailsViewModel> _transactions;
 
-        public static ObservableCollection<TransactionDetailsViewModel> Transactions { get; set; }
+        public ObservableCollection<TransactionDetailsViewModel> Transactions
+        {
+            get
+            {
+                return _transactions;
+            }
+            set
+            {
+                _transactions = value;
+                RaisePropertyChanged();
+            }
+        }
 
         public void UpdateWalletTransactions()
         {
@@ -63,16 +75,17 @@ namespace g4m4nez.GUI.WPF.Wallets
         public void DeleteTransaction()
         {
             if (_currentTransaction is not null)
-                _service.RemoveTransaction(CurrentSession.User.Guid, _wallet.Guid, CurrentTransaction.FromTransaction);
+                _service.RemoveTransaction(CurrentSession.User.Guid, _wallet.Guid, ((TransactionDetailsViewModel)CurrentTransaction).FromTransaction);
         }
 
-        public TransactionsViewModel(Wallet wallet, Action goToAddTransaction)
+        public TransactionsViewModel(Wallet wallet)
         {
             _wallet = wallet;
             Transactions = new ObservableCollection<TransactionDetailsViewModel>();
-            AddTransactionCommand = new DelegateCommand(goToAddTransaction);
+            AddTransactionCommand = new DelegateCommand(() => { CurrentTransaction = new AddTransactionViewModel(this, _wallet);});
             DeleteTransactionCommand = new DelegateCommand(DeleteTransaction);
             UpdateWalletTransactions();
+            //TODO: CLEAR SENSITIVE DATA? UpdateWalletTransactions!!!!! 
         }
     }
 }

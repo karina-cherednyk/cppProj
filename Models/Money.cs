@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 namespace g4m4nez.Models
 {
-    public struct Money
+    public class Money
     {
         private decimal _amount;
         public decimal Amount

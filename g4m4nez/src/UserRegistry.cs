@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
+
 namespace g4m4nez.BusinessLayer
 {
     public class UserRegistry
@@ -14,6 +16,13 @@ namespace g4m4nez.BusinessLayer
         {
             _owner = owner;
             _users = new List<Guid>();
+        }        
+        
+        [JsonConstructor]
+        public UserRegistry(Guid owner, List<Guid> users)
+        {
+            _owner = owner;
+            _users = users;
         }
 
         public void AddUser(Guid user)

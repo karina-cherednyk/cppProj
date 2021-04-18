@@ -1,4 +1,6 @@
-﻿using g4m4nez.GUI.WPF.Authentication;
+﻿using System;
+using g4m4nez.BusinessLayer;
+using g4m4nez.GUI.WPF.Authentication;
 using g4m4nez.GUI.WPF.Navigation;
 using g4m4nez.GUI.WPF.Wallets;
 
@@ -17,18 +19,13 @@ namespace g4m4nez.GUI.WPF
             {
                 return new AuthViewModel(() =>  Navigate(MainNavigatableTypes.Wallets));
             }
+            else if (type == MainNavigatableTypes.Wallets)
+            {
+                return new WalletsViewModel(() => Navigate(MainNavigatableTypes.Auth), () => Navigate(MainNavigatableTypes.AddWallet));
+            }
             else
             {
-                if (type == MainNavigatableTypes.Wallets)
-                {
-                    return new WalletsViewModel(() => Navigate(MainNavigatableTypes.Auth),
-                        () => Navigate(MainNavigatableTypes.AddWallet));
-                }
-
-                else
-                {
-                    return new AddWalletViewModel(() => Navigate(MainNavigatableTypes.Wallets));
-                }
+                return new AddWalletViewModel(() => Navigate(MainNavigatableTypes.Wallets));
             }
         }
     }

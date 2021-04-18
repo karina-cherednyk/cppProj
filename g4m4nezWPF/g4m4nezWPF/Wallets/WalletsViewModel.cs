@@ -24,6 +24,15 @@ namespace g4m4nez.GUI.WPF.Wallets
             set
             {
                 _currentWalletDetailsDetails = value;
+                try
+                {
+                    if (_currentWalletDetailsDetails is not null)
+                        ((TransactionsViewModel)_currentWalletDetailsDetails.Tabs[2]).UpdateWalletTransactions();
+                }
+                catch (Exception e)
+                {
+
+                }
                 RaisePropertyChanged();
             }
         }
@@ -52,11 +61,6 @@ namespace g4m4nez.GUI.WPF.Wallets
         public DelegateCommand SignInCommand { get; }
         public DelegateCommand DeleteWalletCommand { get; }
         public DelegateCommand CloseCommand { get; }
-
-        public async void EditWallet()
-        {
-            await _walletSevice.AddOrUpdateWalletAsync(CurrentWalletDetails.FromWallet);
-        }
 
         public void DeleteWallet()
         {

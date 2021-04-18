@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace g4m4nez.GUI.WPF.Wallets
 {
-    class AddTransactionViewModel : BindableBase
+    class AddTransactionViewModel : BindableBase, ITransactionDetails
     {
         private readonly WalletService _service;
 
@@ -17,13 +17,14 @@ namespace g4m4nez.GUI.WPF.Wallets
 
         private Wallet _currentWallet;
 
-        public Money Amount
+        private TransactionsViewModel _transactionsViewModel;
+        public decimal Amount
         {
-            get => _transaction.Amount;
+            get => _transaction.Amount.Amount;
             set
             {
-                _transaction.Amount = value;
-                RaisePropertyChanged(nameof(Amount));
+                _transaction.Amount.Amount = value;
+                RaisePropertyChanged();
             }
         }
 
@@ -69,8 +70,9 @@ namespace g4m4nez.GUI.WPF.Wallets
         public DelegateCommand TransactionViewCommand { get; }
         public DelegateCommand AddTransactionCommand { get; }
 
-        public AddTransactionViewModel(Action gotoTransactions, Wallet wallet)
+        public AddTransactionViewModel(TransactionsViewModel transactionsViewModel, Wallet wallet)
         {
+            _transactionsViewModel = transactionsViewModel;
             _transaction = new Transaction(
                 CurrentSession.User.Guid, new Money(0, Money.Currencies.USD), "", 
                 new Category("", "", "", Category.Colors.BLUE), DateTime.Now);
@@ -78,17 +80,23 @@ namespace g4m4nez.GUI.WPF.Wallets
             _currentWallet = wallet;
 
             _service = new WalletService();
-            TransactionViewCommand = new DelegateCommand(gotoTransactions);
+            //TransactionViewCommand = new DelegateCommand(gotoTransactions);
             AddTransactionCommand = new DelegateCommand(AddTransaction);
         }
 
         public async void AddTransaction()
         {
-            Transaction transaction = await _service.CreateTransaction(CurrentSession.User.Guid, _currentWallet.Guid,
-                Amount, Description, TransactionCategory, Date);
-
-            TransactionsViewModel.Transactions.Add(new TransactionDetailsViewModel(transaction, _currentWallet));
-            MessageBox.Show($"You've successfully added transaction: {Amount}{Currency}!");
+            try
+            {
+                Transaction transaction = await _service.CreateTransaction(CurrentSession.User.Guid, _currentWallet.Guid,
+                    new Money(Amount, Currency), Description, TransactionCategory, Date);
+                _transactionsViewModel.Transactions.Add(new TransactionDetailsViewModel(transaction, _currentWallet));
+                MessageBox.Show($"You've successfully added transaction: {Amount}{Currency}!");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
     }
 }

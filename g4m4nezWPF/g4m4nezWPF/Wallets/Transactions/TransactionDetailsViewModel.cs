@@ -6,7 +6,7 @@ using System;
 
 namespace g4m4nez.GUI.WPF.Wallets
 {
-    public class TransactionDetailsViewModel : BindableBase
+    public class TransactionDetailsViewModel : BindableBase, ITransactionDetails
     {
         private Transaction _transaction;
         private Wallet _wallet;
@@ -14,10 +14,10 @@ namespace g4m4nez.GUI.WPF.Wallets
         public Transaction FromTransaction => _transaction;
         public Wallet FromWallet => _wallet;
 
-        public Money Amount
+        public decimal Amount
         {
-            get => _transaction.Amount;
-            set => _transaction.Amount = value;
+            get => _transaction.Amount.Amount;
+            set => _transaction.Amount.Amount = value;
         }
 
         public string Description
@@ -43,7 +43,7 @@ namespace g4m4nez.GUI.WPF.Wallets
             set => _transaction.Date = value;
         }
 
-        public string DisplayName => $"{Amount.Amount} ({Currency})";
+        public string DisplayName => $"{Amount} ({Currency})";
 
         public TransactionDetailsViewModel(Transaction transaction, Wallet wallet)
         {

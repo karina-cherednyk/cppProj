@@ -1,6 +1,7 @@
 ﻿using g4m4nez.Models;
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace g4m4nez.BusinessLayer
 {
@@ -58,6 +59,7 @@ namespace g4m4nez.BusinessLayer
             _attachments = new List<string>();
         }
 
+        [JsonConstructor]
         public Transaction(Guid user, Money amount, string description, Category category, DateTime date, List<string> attachments)
         {
             User = user;

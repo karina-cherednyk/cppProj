@@ -1,34 +1,42 @@
 ﻿using g4m4nez.Models;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace g4m4nez.BusinessLayer
 {
     public class WalletCategories
     {
-        private readonly HashSet<Category> allCategories;
-        public HashSet<Category> AllCategories => allCategories;
+        private readonly HashSet<Category> _allCategories;
+        public HashSet<Category> AllCategories => _allCategories;
 
-        private readonly Dictionary<Category, bool> activeCaterogies;
-        public Dictionary<Category, bool> ActiveCategories => activeCaterogies;
+        private readonly Dictionary<Category, bool> _activeCaterogies;
+        public Dictionary<Category, bool> ActiveCategories => _activeCaterogies;
+
+        [JsonConstructor]
+        public WalletCategories(HashSet<Category> allCategories, Dictionary<Category, bool> activeCaterogies)
+        {
+            _allCategories = allCategories;
+            _activeCaterogies = activeCaterogies;
+        }
 
         public void AddCategory(Category category)
         {
-            allCategories.Add(category);
-            activeCaterogies[category] = false;
+            _allCategories.Add(category);
+            _activeCaterogies[category] = false;
         }
 
         public void RemoveCategory(Category category)
         {
-            allCategories.Remove(category);
-            activeCaterogies.Remove(category);
+            _allCategories.Remove(category);
+            _activeCaterogies.Remove(category);
         }
 
         public void AddUserCategories(User user)
         {
-            allCategories.UnionWith(user.Categories.Categories);
+            _allCategories.UnionWith(user.Categories.Categories);
             foreach (Category category in user.Categories.Categories)
             {
-                activeCaterogies[category] = false;
+                _activeCaterogies[category] = false;
             }
         }
 
@@ -40,7 +48,7 @@ namespace g4m4nez.BusinessLayer
             }
             else
             {
-                activeCaterogies[category] = true;
+                _activeCaterogies[category] = true;
             }
         }
         public void DeactivateCategory(Category category)
@@ -51,32 +59,32 @@ namespace g4m4nez.BusinessLayer
             }
             else
             {
-                activeCaterogies[category] = false;
+                _activeCaterogies[category] = false;
             }
         }
 
         public WalletCategories(User owner)
         {
-            allCategories = owner.Categories.Categories;
+            _allCategories = owner.Categories.Categories;
             foreach (Category category in owner.Categories.Categories)
             {
-                activeCaterogies[category] = true;
+                _activeCaterogies[category] = true;
             }
         }
 
         public WalletCategories(HashSet<Category> categories)
         {
-            allCategories = categories;
+            _allCategories = categories;
             foreach (Category category in categories)
             {
-                activeCaterogies[category] = true;
+                _activeCaterogies[category] = true;
             }
         }
 
         public WalletCategories()
         {
-            allCategories = new HashSet<Category>();
-            activeCaterogies = new Dictionary<Category, bool>();
+            _allCategories = new HashSet<Category>();
+            _activeCaterogies = new Dictionary<Category, bool>();
         }
     }
 }

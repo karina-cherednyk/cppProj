@@ -26,7 +26,7 @@
 
                 <StackPanel Grid.Row="0" Grid.Column="0">
                     <TextBlock Margin=" 10,10,10,5">Amount:</TextBlock>
-                    <TextBox  MinWidth="300" Margin="10" HorizontalAlignment="Stretch"  Text="{Binding Amount}"></TextBox>
+					<TextBox  MinWidth="300" Margin="10" HorizontalAlignment="Stretch" Text="{Binding Amount}"></TextBox>
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.Column="0">
                     <TextBlock Margin=" 10,10,10,5">Currency:</TextBlock>
