@@ -47,7 +47,7 @@
 			</ListView>
 
 			<!--Transaction Add/Delete-->
-			<Button Grid.Row="0" Grid.Column="0" Command="{Binding AddTransactionCommand}" Content="+ Transaction" Background="DarkSeaGreen" Foreground="AliceBlue"/>
+            <Button Grid.Row="0" Grid.Column="0" Command="{Binding AddTransactionCommand}" Content="+ Transaction" Background="DarkSeaGreen" Foreground="AliceBlue"/>
 			<Button Grid.Row="0" Grid.Column="1" Command="{Binding DeleteTransactionCommand}" Content="- Transaction" Background="PaleVioletRed" Foreground="AliceBlue"/>
 
 		</Grid>
