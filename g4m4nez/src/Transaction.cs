@@ -69,5 +69,23 @@ namespace g4m4nez.BusinessLayer
             _date = date;
             _attachments = attachments;
         }
+
+        public override int GetHashCode()
+        {
+            return _amount.GetHashCode() + _description.GetHashCode() + _category.GetHashCode() + _date.GetHashCode();
+        }
+        public override bool Equals(object obj)
+        {
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
+            else
+            {
+                Transaction that = (Transaction)obj;
+                return that.GetHashCode() == this.GetHashCode();
+                   
+            }
+        }
     }
 }

@@ -20,6 +20,10 @@ namespace g4m4nez.Models
             {Currencies.UAH, "UAH" },
             {Currencies.EUR, "EUR" }
         };
+        public override int GetHashCode()
+        {
+            return Amount.GetHashCode() + Currency.GetHashCode();
+        }
 
         private Currencies _currency;
         public Currencies Currency

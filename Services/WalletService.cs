@@ -102,6 +102,7 @@ namespace g4m4nez.Services
             if (wallet.IsOwner(userID)) // TODO: may be buggy
             {
                 wallet.Categories.DeactivateCategory(category);
+                await _wallets.AddOrUpdateAsync(wallet);
             }
             else
             {
@@ -115,6 +116,7 @@ namespace g4m4nez.Services
             if (transaction.User == userID || wallet.IsOwner(userID))
             {
                 wallet.Transactions.RemoveTransaction(transaction);
+                await _wallets.AddOrUpdateAsync(wallet);
             }
             else
             {
