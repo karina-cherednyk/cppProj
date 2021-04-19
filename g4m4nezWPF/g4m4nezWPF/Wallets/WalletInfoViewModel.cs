@@ -20,6 +20,8 @@ namespace g4m4nez.GUI.WPF.Wallets
             // TODO: FIX PSEUDO-ASYNC HACK (DELAYED EXECUTION) 
             // RaisePropertyChanged(nameof(DisplayName));
         }
+        public decimal MonthIncome => _wallet.Transactions.MonthIncome.Amount;
+        public decimal MonthExpences => _wallet.Transactions.MonthExpences.Amount;
 
         public decimal Balance // TODO: recheck
         {

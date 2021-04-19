@@ -7,7 +7,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
+    <ScrollViewer 
+        VerticalScrollBarVisibility="Auto" 
+        HorizontalScrollBarVisibility="Auto"
+        Background="White"
+        >
         <StackPanel>
 	        
 	        <Grid>
@@ -16,8 +20,14 @@
 		           <RowDefinition Height="Auto"></RowDefinition>
 		           <RowDefinition Height="Auto"></RowDefinition>
 		           <RowDefinition Height="Auto"></RowDefinition>
+                   <RowDefinition Height="Auto"></RowDefinition>
 		           <RowDefinition Height="Auto"></RowDefinition>
-		       </Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
 
 		       <StackPanel Grid.Row="0">
 		            <TextBlock Margin=" 10,10,10,5">Name</TextBlock>
@@ -38,8 +48,21 @@
 		            <TextBlock Margin=" 10,10,10,5">Main currency</TextBlock>
 		           <TextBox  MinWidth="300" Margin="10" HorizontalAlignment="Stretch" IsReadOnly="True" Text="{Binding MainCurrency, Mode=OneWay, UpdateSourceTrigger=LostFocus  }"></TextBox>
 		       </StackPanel>
-	            
-	            <Button Grid.Row="4"  Margin=" 10,10,10,5" Width="200" Command="{Binding SubmitChangesCommand}">Submit changes</Button>
+
+                <StackPanel Grid.Row="4" >
+                    <TextBlock Margin=" 10,10,10,5">Income</TextBlock>
+                    <TextBox  MinWidth="300" Margin="10" HorizontalAlignment="Stretch" IsReadOnly="True" Text="{Binding MainCurrency, Mode=OneWay, UpdateSourceTrigger=LostFocus  }"></TextBox>
+                </StackPanel>
+                <StackPanel Grid.Row="5" >
+                    <TextBlock Margin=" 10,10,10,5">Month Income</TextBlock>
+                    <TextBlock  MinWidth="300" Margin="10" HorizontalAlignment="Stretch" Text="{Binding MonthIncome}"></TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Row="5" Grid.Column="1">
+                    <TextBlock Margin=" 10,10,10,5">Month Expences</TextBlock>
+                    <TextBlock  MinWidth="300" Margin="10" HorizontalAlignment="Stretch"  Text="{Binding MonthExpences }"></TextBlock>
+                </StackPanel>
+
+                <Button Grid.Row="6"  Margin=" 10,10,10,5" Width="200" Command="{Binding SubmitChangesCommand}">Submit changes</Button>
 
 			</Grid>
 

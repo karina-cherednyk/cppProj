@@ -102,6 +102,15 @@ namespace g4m4nez.GUI.WPF.Wallets
                     new Money(Amount, Currency), Description, TransactionCategory, Date);
                 _transactionsViewModel.Transactions.Add(new TransactionDetailsViewModel(transaction, _currentWallet));
                 MessageBox.Show($"You've successfully added transaction: {Amount}{Currency}!");
+
+                _transaction = new Transaction(
+                  CurrentSession.User.Guid, new Money(0, Money.Currencies.USD), "",
+                  new Category("", "", "", Category.Colors.BLUE), DateTime.Now);
+                RaisePropertyChanged(nameof(Amount));
+                RaisePropertyChanged(nameof(Description));
+                RaisePropertyChanged(nameof(Currency));
+                RaisePropertyChanged(nameof(TransactionCategory));
+                RaisePropertyChanged(nameof(Date));
             }
             catch (Exception e)
             {
