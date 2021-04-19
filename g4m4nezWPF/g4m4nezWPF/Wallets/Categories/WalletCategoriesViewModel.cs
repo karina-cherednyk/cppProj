@@ -59,9 +59,10 @@ namespace g4m4nez.GUI.WPF.Wallets
         public async void AddWalletCategory()
         {
             if (_selectedCategory == null) return;
+            WalletCategoriesAdded.Add(_selectedCategory);
             await Task.Run(() => _service.AddCategory(CurrentSession.User.Guid, _wallet.Guid, _selectedCategory));
             WalletCategoriesAvailable.Remove(_selectedCategory);
-            WalletCategoriesAdded.Add(_selectedCategory);
+            
             _selectedCategory = null;
         }
 
